@@ -9,6 +9,7 @@ import { BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { HttpClientModule } from '@angular/common/http';
 import { ListaComputadorComponent } from './pages/lista-computador/lista-computador.component';
 import { ApiModule} from "./api/api.module";
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -16,14 +17,15 @@ import { ApiModule} from "./api/api.module";
     HomeComponent,
     ListaComputadorComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatTabsModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    ApiModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MatTabsModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        ApiModule,
+        MatTableModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
