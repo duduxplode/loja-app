@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export interface ComputadorDto {
-  dataLancameanto?: string;
+  dataLancamento?: string;
   descricao?: string;
   id?: number;
   processador?: string;
