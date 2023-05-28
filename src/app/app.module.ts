@@ -7,10 +7,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { HomeComponent } from './pages/home/home.component';
 import { BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { HttpClientModule } from '@angular/common/http';
-import { ListaComputadorComponent } from './pages/lista-computador/lista-computador.component';
 import { ApiModule} from "./api/api.module";
 import { MatTableModule } from "@angular/material/table";
-import { FormComputadorComponent } from './pages/form-computador/form-computador.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -23,15 +21,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import {MatDialogModule} from "@angular/material/dialog";
 import { ConfirmationDialog } from './core/confirmation-dialog/confirmation-dialog.component';
+import {ComputadorModule} from "./pages/computador/computador.module";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ListaComputadorComponent,
-    FormComputadorComponent,
-    ConfirmationDialog
+    ConfirmationDialog,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +52,8 @@ import { ConfirmationDialog } from './core/confirmation-dialog/confirmation-dial
     MatDividerModule,
     ReactiveFormsModule,
     MatDialogModule,
+    ComputadorModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
