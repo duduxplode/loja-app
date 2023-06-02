@@ -4,11 +4,8 @@ import {ComputadorControllerService} from "../../../api/services/computador-cont
 import {MatTableDataSource} from "@angular/material/table";
 import {MatDialog} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {
-  ConfirmationDialog,
-  ConfirmationDialogResult
-} from "../../../core/confirmation-dialog/confirmation-dialog.component";
 import {EventEmitterService} from "../../../service/EventEmitterService";
+import {MessageService} from "../../../arquitetura/message/message.service";
 
 @Component({
   selector: 'app-lista-computador',
@@ -24,7 +21,8 @@ export class ListaComputadorComponent implements OnInit{
   constructor(
     public computadorService: ComputadorControllerService,
     private dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private messageService: MessageService
   ) {
   }
 
@@ -59,31 +57,13 @@ export class ListaComputadorComponent implements OnInit{
   }
 
   confirmarExcluir(computadorDto: ComputadorDto) {
-    const dialogRef = this.dialog.open(ConfirmationDialog, {
-      data: {
-        titulo: 'Confirmar?',
-        mensagem: `A exclusão de: ${computadorDto.descricao} (ID: ${computadorDto.id})?`,
-        textoBotoes: {
-          ok: 'Confirmar',
-          cancel: 'Cancelar',
-        },
-        dado: computadorDto
-      },
-    });
-
-    dialogRef.afterClosed().subscribe((confirmed: ConfirmationDialogResult) => {
-      if (confirmed?.resultado) {
-        this.remover(confirmed.dado);
-      }
+    this.messageService.addConfirmYesNo(`A exclusão de: ${computadorDto.descricao} (ID: ${computadorDto.id})?`,()=>{
+      this.remover(computadorDto);
     });
   }
 
   showMensagemSimples( mensagem: string, duracao: number = 2000) {
-    this.snackBar.open(mensagem, 'Fechar', {
-      duration: duracao,
-      horizontalPosition: 'center',
-      verticalPosition: 'top',
-    });
+    this.messageService.addMsgInf(mensagem);
   }
 
 }

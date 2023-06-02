@@ -9,10 +9,10 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ComputadorControllerService} from "../../../api/services/computador-controller.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ComputadorDto} from "../../../api/models/computador-dto";
-import {ConfirmationDialog} from "../../../core/confirmation-dialog/confirmation-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 import {MessageResponse} from "../../../api/models/message-response";
 import * as moment from "moment";
+import {MessageService} from "../../../arquitetura/message/message.service";
 
 @Component({
   selector: 'app-form-computador',
@@ -34,6 +34,7 @@ export class FormComputadorComponent {
     private _adapter: DateAdapter<any>,
     public computadorService: ComputadorControllerService,
     private dialog: MatDialog,
+    private mensageService: MessageService
   ) {
     this.createForm();
     this._adapter.setLocale('pt-br');
@@ -51,16 +52,7 @@ export class FormComputadorComponent {
   }
 
   showError(erro: MessageResponse, acao: string) {
-    const dialogRef = this.dialog.open(ConfirmationDialog, {
-      data: {
-        titulo: `Erro ao ${acao}`,
-        mensagem: erro.message,
-        textoBotoes: {
-          ok: 'ok',
-        },
-      },
-    });
-
+    this.mensageService.addMsgWarning(`Erro ao ${acao}`);
   }
 
   private realizarEdicao() {
@@ -90,16 +82,7 @@ export class FormComputadorComponent {
   }
 
   confirmarAcao(computadorDto: ComputadorDto, acao: string) {
-    const dialogRef = this.dialog.open(ConfirmationDialog, {
-      data: {
-        titulo: 'Mensagem!!!',
-        mensagem: `Ação de ${acao} dados: ${computadorDto.descricao} (ID: ${computadorDto.id}) realizada com sucesso!`,
-        textoBotoes: {
-          ok: 'ok',
-        },
-      },
-    });
-
+    this.mensageService.addConfirmYesNo(`Ação de ${acao} dados: ${computadorDto.descricao} (ID: ${computadorDto.id}) realizada com sucesso!`);
   }
 
   private prepararEdicao() {
