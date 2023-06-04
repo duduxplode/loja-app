@@ -34,9 +34,10 @@
     </mat-form-field>
     <mat-form-field>
       <mat-label>Unidade</mat-label>
-      <input matInput formControlName="unidadeRam" #message maxlength="2" placeholder="Ex. GB...">
-      <mat-hint align="start"><strong></strong> </mat-hint>
-      <mat-hint align="end">{{message.value.length}} / 2</mat-hint>
+      <mat-select formControlName="unidadeRam">
+        <mat-option value="GB">GB</mat-option>
+        <mat-option value="TB">TB</mat-option>
+      </mat-select>
     </mat-form-field>
   </div>
   <div class="formComputador">
@@ -48,9 +49,10 @@
     </mat-form-field>
     <mat-form-field >
       <mat-label>Unidade</mat-label>
-      <input matInput formControlName="unidadeHd" #message maxlength="2" placeholder="Ex. GB...">
-      <mat-hint align="start"><strong></strong> </mat-hint>
-      <mat-hint align="end">{{message.value.length}} / 2</mat-hint>
+      <mat-select formControlName="unidadeHd">
+        <mat-option value="GB">GB</mat-option>
+        <mat-option value="TB">TB</mat-option>
+      </mat-select>
     </mat-form-field>
   </div>
   <div>
