@@ -57,7 +57,7 @@ export class FormComputadorComponent {
 
   private realizarEdicao() {
     console.log("Dados edicao:", this.formGroup.value);
-    this.computadorService.alterar({id: this.id, body: this.formGroup.value})
+    this.computadorService.alterar1({id: this.id, body: this.formGroup.value})
       .subscribe(retorno => {
         console.log("Retorno:", retorno);
         this.confirmarAcao(retorno, this.ACAO_EDITAR);
@@ -70,7 +70,7 @@ export class FormComputadorComponent {
 
   private realizarInclusao() {
     console.log("Dados inclusao:", this.formGroup.value);
-    this.computadorService.incluir({body: this.formGroup.value})
+    this.computadorService.incluir1({body: this.formGroup.value})
       .subscribe(retorno => {
         console.log("Retorno:", retorno);
         this.confirmarAcao(retorno, this.ACAO_INCLUIR);
@@ -82,7 +82,7 @@ export class FormComputadorComponent {
   }
 
   confirmarAcao(computadorDto: ComputadorDto, acao: string) {
-    this.mensageService.addConfirmYesNo(`Ação de ${acao} dados: ${computadorDto.descricao} (ID: ${computadorDto.id}) realizada com sucesso!`);
+    this.mensageService.addConfirmOk(`Ação de ${acao} dados: ${computadorDto.descricao} (ID: ${computadorDto.id}) realizada com sucesso!`);
   }
 
   private prepararEdicao() {
@@ -91,7 +91,7 @@ export class FormComputadorComponent {
     if (paramId) {
       const codigo = parseInt(paramId);
       console.log("codigo", paramId);
-      this.computadorService.obterPorId({id: codigo}).subscribe(
+      this.computadorService.obterPorId1({id: codigo}).subscribe(
         retorno => {
           this.acao = this.ACAO_EDITAR;
           console.log("retorno", retorno);
@@ -128,6 +128,9 @@ export class FormComputadorComponent {
       unidadeRam: [null, Validators.required],
       tamanhoHd: [null, Validators.required],
       unidadeHd: [null, Validators.required],
+      valorCompra: [null, Validators.required],
+      valorVenda: [null, Validators.required],
+      quantidade: [null, Validators.required],
     });
   }
 }

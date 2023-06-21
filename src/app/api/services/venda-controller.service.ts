@@ -9,12 +9,12 @@ import { RequestBuilder } from '../request-builder';
 import { Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 
-import { ComputadorDto } from '../models/computador-dto';
+import { VendaDto } from '../models/venda-dto';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ComputadorControllerService extends BaseService {
+export class VendaControllerService extends BaseService {
   constructor(
     config: ApiConfiguration,
     http: HttpClient
@@ -23,26 +23,26 @@ export class ComputadorControllerService extends BaseService {
   }
 
   /**
-   * Path part for operation obterPorId1
+   * Path part for operation obterPorId
    */
-  static readonly ObterPorId1Path = '/api/v1/computador/{id}';
+  static readonly ObterPorIdPath = '/api/v1/venda/{id}';
 
   /**
-   * Obter os dados completos de um computador pelo id informado!
+   * Obter os dados completos de uma venda pelo id informado!
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `obterPorId1()` instead.
+   * To access only the response body, use `obterPorId()` instead.
    *
    * This method doesn't expect any request body.
    */
-  obterPorId1$Response(params: {
+  obterPorId$Response(params: {
     id: number;
   },
   context?: HttpContext
 
-): Observable<StrictHttpResponse<ComputadorDto>> {
+): Observable<StrictHttpResponse<VendaDto>> {
 
-    const rb = new RequestBuilder(this.rootUrl, ComputadorControllerService.ObterPorId1Path, 'get');
+    const rb = new RequestBuilder(this.rootUrl, VendaControllerService.ObterPorIdPath, 'get');
     if (params) {
       rb.path('id', params.id, {});
     }
@@ -54,53 +54,53 @@ export class ComputadorControllerService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<ComputadorDto>;
+        return r as StrictHttpResponse<VendaDto>;
       })
     );
   }
 
   /**
-   * Obter os dados completos de um computador pelo id informado!
+   * Obter os dados completos de uma venda pelo id informado!
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `obterPorId1$Response()` instead.
+   * To access the full response (for headers, for example), `obterPorId$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  obterPorId1(params: {
+  obterPorId(params: {
     id: number;
   },
   context?: HttpContext
 
-): Observable<ComputadorDto> {
+): Observable<VendaDto> {
 
-    return this.obterPorId1$Response(params,context).pipe(
-      map((r: StrictHttpResponse<ComputadorDto>) => r.body as ComputadorDto)
+    return this.obterPorId$Response(params,context).pipe(
+      map((r: StrictHttpResponse<VendaDto>) => r.body as VendaDto)
     );
   }
 
   /**
-   * Path part for operation alterar1
+   * Path part for operation alterar
    */
-  static readonly Alterar1Path = '/api/v1/computador/{id}';
+  static readonly AlterarPath = '/api/v1/venda/{id}';
 
   /**
-   * Método utilizado para altlerar os dados de um computador
+   * Método utilizado para altlerar os dados de uma venda
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `alterar1()` instead.
+   * To access only the response body, use `alterar()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  alterar1$Response(params: {
+  alterar$Response(params: {
     id: number;
-    body: ComputadorDto
+    body: VendaDto
   },
   context?: HttpContext
 
-): Observable<StrictHttpResponse<ComputadorDto>> {
+): Observable<StrictHttpResponse<VendaDto>> {
 
-    const rb = new RequestBuilder(this.rootUrl, ComputadorControllerService.Alterar1Path, 'put');
+    const rb = new RequestBuilder(this.rootUrl, VendaControllerService.AlterarPath, 'put');
     if (params) {
       rb.path('id', params.id, {});
       rb.body(params.body, 'application/json');
@@ -113,53 +113,53 @@ export class ComputadorControllerService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<ComputadorDto>;
+        return r as StrictHttpResponse<VendaDto>;
       })
     );
   }
 
   /**
-   * Método utilizado para altlerar os dados de um computador
+   * Método utilizado para altlerar os dados de uma venda
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `alterar1$Response()` instead.
+   * To access the full response (for headers, for example), `alterar$Response()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  alterar1(params: {
+  alterar(params: {
     id: number;
-    body: ComputadorDto
+    body: VendaDto
   },
   context?: HttpContext
 
-): Observable<ComputadorDto> {
+): Observable<VendaDto> {
 
-    return this.alterar1$Response(params,context).pipe(
-      map((r: StrictHttpResponse<ComputadorDto>) => r.body as ComputadorDto)
+    return this.alterar$Response(params,context).pipe(
+      map((r: StrictHttpResponse<VendaDto>) => r.body as VendaDto)
     );
   }
 
   /**
-   * Path part for operation remover1
+   * Path part for operation remover
    */
-  static readonly Remover1Path = '/api/v1/computador/{id}';
+  static readonly RemoverPath = '/api/v1/venda/{id}';
 
   /**
-   * Método utililzado para remover um computador pelo Id informado
+   * Método utililzado para remover uma venda pelo Id informado
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `remover1()` instead.
+   * To access only the response body, use `remover()` instead.
    *
    * This method doesn't expect any request body.
    */
-  remover1$Response(params: {
+  remover$Response(params: {
     id: number;
   },
   context?: HttpContext
 
-): Observable<StrictHttpResponse<ComputadorDto>> {
+): Observable<StrictHttpResponse<VendaDto>> {
 
-    const rb = new RequestBuilder(this.rootUrl, ComputadorControllerService.Remover1Path, 'delete');
+    const rb = new RequestBuilder(this.rootUrl, VendaControllerService.RemoverPath, 'delete');
     if (params) {
       rb.path('id', params.id, {});
     }
@@ -171,51 +171,51 @@ export class ComputadorControllerService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<ComputadorDto>;
+        return r as StrictHttpResponse<VendaDto>;
       })
     );
   }
 
   /**
-   * Método utililzado para remover um computador pelo Id informado
+   * Método utililzado para remover uma venda pelo Id informado
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `remover1$Response()` instead.
+   * To access the full response (for headers, for example), `remover$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  remover1(params: {
+  remover(params: {
     id: number;
   },
   context?: HttpContext
 
-): Observable<ComputadorDto> {
+): Observable<VendaDto> {
 
-    return this.remover1$Response(params,context).pipe(
-      map((r: StrictHttpResponse<ComputadorDto>) => r.body as ComputadorDto)
+    return this.remover$Response(params,context).pipe(
+      map((r: StrictHttpResponse<VendaDto>) => r.body as VendaDto)
     );
   }
 
   /**
-   * Path part for operation listAll1
+   * Path part for operation listAll
    */
-  static readonly ListAll1Path = '/api/v1/computador';
+  static readonly ListAllPath = '/api/v1/venda';
 
   /**
-   * Listagem Geral de computadores
+   * Listagem Geral de vendas
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `listAll1()` instead.
+   * To access only the response body, use `listAll()` instead.
    *
    * This method doesn't expect any request body.
    */
-  listAll1$Response(params?: {
+  listAll$Response(params?: {
   },
   context?: HttpContext
 
-): Observable<StrictHttpResponse<Array<ComputadorDto>>> {
+): Observable<StrictHttpResponse<Array<VendaDto>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, ComputadorControllerService.ListAll1Path, 'get');
+    const rb = new RequestBuilder(this.rootUrl, VendaControllerService.ListAllPath, 'get');
     if (params) {
     }
 
@@ -226,51 +226,51 @@ export class ComputadorControllerService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<Array<ComputadorDto>>;
+        return r as StrictHttpResponse<Array<VendaDto>>;
       })
     );
   }
 
   /**
-   * Listagem Geral de computadores
+   * Listagem Geral de vendas
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `listAll1$Response()` instead.
+   * To access the full response (for headers, for example), `listAll$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  listAll1(params?: {
+  listAll(params?: {
   },
   context?: HttpContext
 
-): Observable<Array<ComputadorDto>> {
+): Observable<Array<VendaDto>> {
 
-    return this.listAll1$Response(params,context).pipe(
-      map((r: StrictHttpResponse<Array<ComputadorDto>>) => r.body as Array<ComputadorDto>)
+    return this.listAll$Response(params,context).pipe(
+      map((r: StrictHttpResponse<Array<VendaDto>>) => r.body as Array<VendaDto>)
     );
   }
 
   /**
-   * Path part for operation incluir1
+   * Path part for operation incluir
    */
-  static readonly Incluir1Path = '/api/v1/computador';
+  static readonly IncluirPath = '/api/v1/venda';
 
   /**
-   * Método utilizado para realizar a inclusão de um computador
+   * Método utilizado para realizar a inclusão de uma venda
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `incluir1()` instead.
+   * To access only the response body, use `incluir()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  incluir1$Response(params: {
-    body: ComputadorDto
+  incluir$Response(params: {
+    body: VendaDto
   },
   context?: HttpContext
 
-): Observable<StrictHttpResponse<ComputadorDto>> {
+): Observable<StrictHttpResponse<VendaDto>> {
 
-    const rb = new RequestBuilder(this.rootUrl, ComputadorControllerService.Incluir1Path, 'post');
+    const rb = new RequestBuilder(this.rootUrl, VendaControllerService.IncluirPath, 'post');
     if (params) {
       rb.body(params.body, 'application/json');
     }
@@ -282,28 +282,28 @@ export class ComputadorControllerService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<ComputadorDto>;
+        return r as StrictHttpResponse<VendaDto>;
       })
     );
   }
 
   /**
-   * Método utilizado para realizar a inclusão de um computador
+   * Método utilizado para realizar a inclusão de uma venda
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `incluir1$Response()` instead.
+   * To access the full response (for headers, for example), `incluir$Response()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  incluir1(params: {
-    body: ComputadorDto
+  incluir(params: {
+    body: VendaDto
   },
   context?: HttpContext
 
-): Observable<ComputadorDto> {
+): Observable<VendaDto> {
 
-    return this.incluir1$Response(params,context).pipe(
-      map((r: StrictHttpResponse<ComputadorDto>) => r.body as ComputadorDto)
+    return this.incluir$Response(params,context).pipe(
+      map((r: StrictHttpResponse<VendaDto>) => r.body as VendaDto)
     );
   }
 

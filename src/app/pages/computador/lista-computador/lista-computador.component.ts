@@ -13,7 +13,7 @@ import {MessageService} from "../../../arquitetura/message/message.service";
   styleUrls: ['./lista-computador.component.css']
 })
 export class ListaComputadorComponent implements OnInit{
-  colunasMostrar = ['id', 'descricao', 'tipo', 'acao'];
+  colunasMostrar = ['id', 'descricao', 'tipo', 'quantidade', 'acao'];
   computadorListaDataSource: MatTableDataSource<ComputadorDto> = new MatTableDataSource<ComputadorDto>([]);
   refreshEvento: any = null;
 
@@ -32,7 +32,7 @@ export class ListaComputadorComponent implements OnInit{
   }
 
   public buscarDados() {
-    this.computadorService.listAll().subscribe(data => {
+    this.computadorService.listAll1().subscribe(data => {
       console.log(data);
       this.computadorListaDataSource.data = data;
     })
@@ -40,7 +40,7 @@ export class ListaComputadorComponent implements OnInit{
 
   remover(computadorDto: ComputadorDto) {
     console.log("Removido", computadorDto.id);
-    this.computadorService.remover({id: computadorDto.id || 0})
+    this.computadorService.remover1({id: computadorDto.id || 0})
       .subscribe(retorno => {
           this.buscarDados();
           this.showMensagemSimples("Excluído com sucesso ",5000);

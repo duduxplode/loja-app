@@ -64,5 +64,27 @@
       <mat-datepicker #picker ></mat-datepicker>
     </mat-form-field>
   </div>
+  <div class="formComputador">
+    <mat-form-field >
+      <mat-label>Valor de compra</mat-label>
+      <input matInput formControlName="valorCompra" #message maxlength="50" placeholder="Ex. 1.000,00...">
+      <mat-hint align="start"><strong></strong> </mat-hint>
+      <mat-hint align="end">{{message.value.length}} / 50</mat-hint>
+    </mat-form-field>
+    <mat-form-field >
+      <mat-label>Valor de venda</mat-label>
+      <input matInput formControlName="valorVenda" #message maxlength="50" placeholder="Ex. 1.000,00...">
+      <mat-hint align="start"><strong></strong> </mat-hint>
+      <mat-hint align="end">{{message.value.length}} / 50</mat-hint>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field >
+      <mat-label>Quantidade adiquirida</mat-label>
+      <input matInput formControlName="quantidade" #message maxlength="4" placeholder="Ex. 4...">
+      <mat-hint align="start"><strong></strong> </mat-hint>
+      <mat-hint align="end">{{message.value.length}} / 4</mat-hint>
+    </mat-form-field>
+  </div>
   <button mat-raised-button color="primary" type="submit">Salvar</button>
 </form>
