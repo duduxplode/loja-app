@@ -61,7 +61,7 @@ export class FormComputadorComponent {
       .subscribe(retorno => {
         console.log("Retorno:", retorno);
         this.confirmarAcao(retorno, this.ACAO_EDITAR);
-        this.router.navigate(["/computador"]);
+        this.router.navigate(["/adm/computador"]);
       }, erro => {
         console.log("Erro:", erro.error);
         this.showError(erro.error, this.ACAO_EDITAR);
@@ -74,7 +74,7 @@ export class FormComputadorComponent {
       .subscribe(retorno => {
         console.log("Retorno:", retorno);
         this.confirmarAcao(retorno, this.ACAO_INCLUIR);
-        this.router.navigate(["/computador"]);
+        this.router.navigate(["/adm/computador"]);
       }, erro => {
         console.log("Erro:" + erro);
         this.showError(erro.error, this.ACAO_INCLUIR)

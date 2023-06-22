@@ -5,6 +5,7 @@ import {MatSidenav} from "@angular/material/sidenav";
 import {BreakpointObserver} from "@angular/cdk/layout";
 import {delay, filter} from "rxjs/operators";
 import {SecurityService} from "../../arquitetura/security/security.service";
+import {MessageService} from "../../arquitetura/message/message.service";
 
 @UntilDestroy()
 @Component({
@@ -19,7 +20,17 @@ export class HomeComponent {
   constructor(
     private observer: BreakpointObserver,
     private router: Router,
+    private mensageService: MessageService,
     private securityService: SecurityService) {
+  }
+
+  ngOnInit(): void {
+    if (this.securityService.credential.login !== 'admin') {
+      this.router.navigate(['/']);
+      this.mensageService.addConfirmOk(`Você não tem acesso a essa área`);
+    }
+    if (!this.securityService.isValid())
+      this.router.navigate(['/acesso']);
   }
 
   ngAfterViewInit() {

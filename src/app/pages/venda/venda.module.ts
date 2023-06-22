@@ -5,6 +5,8 @@ import {VendaRoutingModule} from "./venda-routing.module";
 import {HomeVendaComponent} from "./home-venda/home-venda.component";
 import {MatListModule} from "@angular/material/list";
 import {MatIconModule} from "@angular/material/icon";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatSidenavModule} from "@angular/material/sidenav";
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import {MatIconModule} from "@angular/material/icon";
     CommonModule,
     VendaRoutingModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    MatToolbarModule,
+    MatSidenavModule
   ]
 })
 export class VendaModule { }
