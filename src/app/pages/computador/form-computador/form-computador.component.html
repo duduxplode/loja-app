@@ -87,13 +87,13 @@
     </mat-form-field>
   </div>
   <div class="text-center">
-    <input class="form-control" type="file" formControlName="imagem"
+    <input class="form-control" type="file" formControlName="imagem" required
            (change)="onChange($event)">
 
-<!--    <button (click)="onUpload()"-->
-<!--            class="btn btn-success">-->
-<!--      Upload-->
-<!--    </button>-->
+    <button (click)="onUpload()"
+            class="btn btn-success">
+      Upload
+    </button>
   </div>
 
   <!-- Shareable short link of  uploaded file -->

@@ -61,6 +61,7 @@ export class FormComputadorComponent {
   // On file Select
   onChange(event: any) {
     this.file = event.target.files[0];
+    alert(this.formGroup.value.imagem);
   }
 
   // OnClick of button Upload
@@ -78,6 +79,7 @@ export class FormComputadorComponent {
         }
       }
     );
+    return false;
   }
 
   showError(erro: MessageResponse, acao: string) {
@@ -99,6 +101,7 @@ export class FormComputadorComponent {
 
   private realizarInclusao() {
     console.log("Dados inclusao:", this.formGroup.value);
+    this.formGroup.value.imagem = this.shortLink;
     this.computadorService.incluir1({body: this.formGroup.value})
       .subscribe(retorno => {
         console.log("Retorno:", retorno);
@@ -141,25 +144,28 @@ export class FormComputadorComponent {
 
   createForm() {
     this.formGroup = this.formBuilder.group({
-      // descricao: ["Dell G7", Validators.required],
-      // dataLancamento: [new Date(), Validators.required],
-      // tipo: ["Notebook", Validators.required],
-      // processador: ["Core i7", Validators.required],
-      // tamanhoRam: ["16", Validators.required],
-      // unidadeRam: ["GB", Validators.required],
-      // tamanhoHd: ["500", Validators.required],
-      // unidadeHd: ["GB", Validators.required],
-      descricao: [null, Validators.required],
+      descricao: ["Dell G7", Validators.required],
       dataLancamento: [new Date(), Validators.required],
-      tipo: [null, Validators.required],
-      processador: [null, Validators.required],
-      tamanhoRam: [null, Validators.required],
-      unidadeRam: [null, Validators.required],
-      tamanhoHd: [null, Validators.required],
-      unidadeHd: [null, Validators.required],
-      valorCompra: [null, Validators.required],
-      valorVenda: [null, Validators.required],
-      quantidade: [null, Validators.required],
+      tipo: ["Notebook", Validators.required],
+      processador: ["Core i7", Validators.required],
+      tamanhoRam: ["16", Validators.required],
+      unidadeRam: ["GB", Validators.required],
+      tamanhoHd: ["500", Validators.required],
+      unidadeHd: ["GB", Validators.required],
+      valorCompra: [3500, Validators.required],
+      valorVenda: [4500, Validators.required],
+      quantidade: [2, Validators.required],
+      // descricao: [null, Validators.required],
+      // dataLancamento: [new Date(), Validators.required],
+      // tipo: [null, Validators.required],
+      // processador: [null, Validators.required],
+      // tamanhoRam: [null, Validators.required],
+      // unidadeRam: [null, Validators.required],
+      // tamanhoHd: [null, Validators.required],
+      // unidadeHd: [null, Validators.required],
+      // valorCompra: [null, Validators.required],
+      // valorVenda: [null, Validators.required],
+      // quantidade: [null, Validators.required],
       imagem: [null, null],
     });
   }
