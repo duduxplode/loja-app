@@ -13,6 +13,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {MessageResponse} from "../../../api/models/message-response";
 import * as moment from "moment";
 import {MessageService} from "../../../arquitetura/message/message.service";
+import {FileUploadService} from "../../../service/file-upload.service";
 
 @Component({
   selector: 'app-form-computador',
@@ -27,6 +28,11 @@ export class FormComputadorComponent {
   acao: string = this.ACAO_INCLUIR;
   id!: number;
 
+  // Variable to store shortLink from api response
+  shortLink: string = "";
+  loading: boolean = false; // Flag variable
+  file!: File; // Variable to store file
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -34,7 +40,8 @@ export class FormComputadorComponent {
     private _adapter: DateAdapter<any>,
     public computadorService: ComputadorControllerService,
     private dialog: MatDialog,
-    private mensageService: MessageService
+    private mensageService: MessageService,
+    private fileUploadService: FileUploadService
   ) {
     this.createForm();
     this._adapter.setLocale('pt-br');
@@ -49,6 +56,28 @@ export class FormComputadorComponent {
         this.realizarEdicao();
       }
     }
+  }
+
+  // On file Select
+  onChange(event: any) {
+    this.file = event.target.files[0];
+  }
+
+  // OnClick of button Upload
+  onUpload() {
+    this.loading = !this.loading;
+    console.log(this.file);
+    this.fileUploadService.upload(this.file).subscribe(
+      (event: any) => {
+        if (typeof (event) === 'object') {
+
+          // Short link via api response
+          this.shortLink = event.link;
+
+          this.loading = false; // Flag variable
+        }
+      }
+    );
   }
 
   showError(erro: MessageResponse, acao: string) {
@@ -131,6 +160,7 @@ export class FormComputadorComponent {
       valorCompra: [null, Validators.required],
       valorVenda: [null, Validators.required],
       quantidade: [null, Validators.required],
+      imagem: [null, null],
     });
   }
 }

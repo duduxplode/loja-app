@@ -33,7 +33,7 @@ export class HomeVendaComponent implements OnInit{
     private mensageService: MessageService,
     private observer: BreakpointObserver,
     private router: Router,
-    private securityService: SecurityService
+    public securityService: SecurityService
   ){}
 
   ngOnInit(): void {
