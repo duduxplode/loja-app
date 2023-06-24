@@ -14,6 +14,7 @@ import {MessageResponse} from "../../../api/models/message-response";
 import * as moment from "moment";
 import {MessageService} from "../../../arquitetura/message/message.service";
 import {FileUploadService} from "../../../service/file-upload.service";
+import {FileUploadControllerService} from "../../../api/services/file-upload-controller.service";
 
 @Component({
   selector: 'app-form-computador',
@@ -41,7 +42,7 @@ export class FormComputadorComponent {
     public computadorService: ComputadorControllerService,
     private dialog: MatDialog,
     private mensageService: MessageService,
-    private fileUploadService: FileUploadService
+    private fileUploadService: FileUploadControllerService
   ) {
     this.createForm();
     this._adapter.setLocale('pt-br');
@@ -68,17 +69,18 @@ export class FormComputadorComponent {
   onUpload() {
     this.loading = !this.loading;
     console.log(this.file);
-    this.fileUploadService.upload(this.file).subscribe(
-      (event: any) => {
-        if (typeof (event) === 'object') {
-
-          // Short link via api response
-          this.shortLink = event.link;
-
-          this.loading = false; // Flag variable
-        }
-      }
-    );
+    this.fileUploadService.handleFileUpload({body: {'files': this.file}});
+    // this.fileUploadService.upload(this.file).subscribe(
+    //   (event: any) => {
+    //     if (typeof (event) === 'object') {
+    //
+    //       // Short link via api response
+    //       this.shortLink = event.link;
+    //
+    //       this.loading = false; // Flag variable
+    //     }
+    //   }
+    // );
     return false;
   }
 

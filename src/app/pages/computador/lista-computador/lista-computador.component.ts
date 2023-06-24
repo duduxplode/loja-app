@@ -22,7 +22,7 @@ export class ListaComputadorComponent implements OnInit{
     public computadorService: ComputadorControllerService,
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
-    private messageService: MessageService
+    private messageService: MessageService,
   ) {
   }
 
@@ -47,9 +47,9 @@ export class ListaComputadorComponent implements OnInit{
           console.log("Exlcusão:", retorno);
         }, error => {
           if (error.status === 404) {
-            this.showMensagemSimples("Computador não existe mais")
+            this.showMensagemSimples("Computador não existe mais", 5000)
           } else {
-            this.showMensagemSimples("Erro ao excluir");
+            this.messageService.addConfirmOk("Erro ao excluir: "+error.message);
             console.log("Erro:", error);
           }
         }

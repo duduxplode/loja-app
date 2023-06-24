@@ -41,6 +41,7 @@
     <div class="content mat-elevation-z8">
       <mat-list>
         <mat-list-item *ngFor="let computador of computadorListaDataSource.data">
+          <img src="{{computador.imagem}}">
           {{computador.descricao}}
           <button mat-raised-button (click)="vender(computador)">
             <mat-icon>add_shopping_cart</mat-icon>
