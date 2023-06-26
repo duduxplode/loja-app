@@ -62,14 +62,14 @@ export class FormComputadorComponent {
   // On file Select
   onChange(event: any) {
     this.file = event.target.files[0];
-    alert(this.formGroup.value.imagem);
   }
 
   // OnClick of button Upload
   onUpload() {
     this.loading = !this.loading;
-    console.log(this.file);
-    this.fileUploadService.handleFileUpload({body: {'files': this.file}});
+
+    this.fileUploadService.handleFileUpload({body: {'file': this.file}});
+
     // this.fileUploadService.upload(this.file).subscribe(
     //   (event: any) => {
     //     if (typeof (event) === 'object') {

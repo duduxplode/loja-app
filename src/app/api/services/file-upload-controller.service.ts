@@ -9,7 +9,6 @@ import { RequestBuilder } from '../request-builder';
 import { Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -90,7 +89,7 @@ export class FileUploadControllerService extends BaseService {
    */
   handleFileUpload$Response(params?: {
     body?: {
-'files': Blob;
+'file': Blob;
 }
   },
   context?: HttpContext
@@ -101,7 +100,7 @@ export class FileUploadControllerService extends BaseService {
     if (params) {
       rb.body(params.body, 'multipart/form-data');
     }
-console.log(params);
+
     return this.http.request(rb.build({
       responseType: 'blob',
       accept: 'multipart/form-data',
@@ -124,7 +123,7 @@ console.log(params);
    */
   handleFileUpload(params?: {
     body?: {
-'files': Blob;
+'file': Blob;
 }
   },
   context?: HttpContext
