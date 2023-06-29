@@ -25,6 +25,12 @@
       <td mat-cell *matCellDef="let element"> {{element.quantidade}} </td>
     </ng-container>
 
+    <!-- Vendas Column -->
+    <ng-container matColumnDef="vendas">
+      <th mat-header-cell *matHeaderCellDef> Vendas </th>
+      <td mat-cell *matCellDef="let element"> {{element.contVendas}} </td>
+    </ng-container>
+
     <!-- Ação Column -->
     <ng-container matColumnDef="acao">
       <th mat-header-cell *matHeaderCellDef> Ação </th>

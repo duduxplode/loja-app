@@ -11,7 +11,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   styleUrls: ['./list-venda.component.css']
 })
 export class ListVendaComponent implements OnInit{
-  colunasMostrar = ['id', 'data', 'computador' , 'valor_unitario', 'quantidade', 'valor_total'];
+  colunasMostrar = ['id', 'cliente' , 'data', 'computador' , 'valor_unitario', 'quantidade', 'valor_total'];
   vendaListaDataSource: MatTableDataSource<VendaDto> = new MatTableDataSource<VendaDto>([]);
   refreshEvento: any = null;
 

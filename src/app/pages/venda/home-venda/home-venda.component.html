@@ -38,9 +38,9 @@
     </button>
   </mat-sidenav>
   <mat-sidenav-content>
-    <div class="content mat-elevation-z8">
+    <div class="content mat-elevation-z8 " >
       <mat-list>
-        <mat-list-item *ngFor="let computador of computadorListaDataSource.data" style="height: min-content">
+        <mat-list-item *ngFor="let computador of computadorListaDataSource.data" style="height: auto; vertical-align: middle;">
           <img src="data:image/jpeg;base64,{{computador.imagemBase64}}" width="15%"/>
           {{computador.descricao}}
           <button mat-raised-button (click)="vender(computador)">

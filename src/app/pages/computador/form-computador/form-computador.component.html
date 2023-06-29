@@ -81,7 +81,7 @@
   <div>
     <mat-form-field >
       <mat-label>Quantidade adiquirida</mat-label>
-      <input matInput formControlName="quantidade" #message maxlength="4" placeholder="Ex. 4...">
+      <input matInput formControlName="quantidade" #message maxlength="4" placeholder="Ex. 4..." number-only=".">
       <mat-hint align="start"><strong></strong> </mat-hint>
       <mat-hint align="end">{{message.value.length}} / 4</mat-hint>
     </mat-form-field>

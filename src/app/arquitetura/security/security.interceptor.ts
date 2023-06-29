@@ -36,7 +36,7 @@ export class SecurityInterceptor implements HttpInterceptor {
           Authorization: `Bearer ${this.securityService.credential.accessToken}`
         }
       });
-    }
+    }console.log(request);
     return next.handle(request).pipe(catchError((response: HttpErrorResponse): Observable<HttpEvent<any>> => {
 
       if (response.status === 401) {

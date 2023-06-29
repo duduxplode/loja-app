@@ -15,11 +15,12 @@ import * as moment from "moment";
 import {MessageService} from "../../../arquitetura/message/message.service";
 import {FileUploadService} from "../../../service/file-upload.service";
 import {FileUploadControllerService} from "../../../api/services/file-upload-controller.service";
+import {SecurityService} from "../../../arquitetura/security/security.service";
 
 @Component({
   selector: 'app-form-computador',
   templateUrl: './form-computador.component.html',
-  styleUrls: ['./form-computador.component.css']
+  styleUrls: ['./form-computador.component.scss']
 })
 export class FormComputadorComponent {
   formGroup!: FormGroup;
@@ -42,7 +43,8 @@ export class FormComputadorComponent {
     public computadorService: ComputadorControllerService,
     private dialog: MatDialog,
     private mensageService: MessageService,
-    private fileUploadService: FileUploadControllerService
+    private fileUploadService: FileUploadControllerService,
+    private securityService: SecurityService
   ) {
     this.createForm();
     this._adapter.setLocale('pt-br');
@@ -172,4 +174,5 @@ export class FormComputadorComponent {
       imagem: [null, null],
     });
   }
+
 }

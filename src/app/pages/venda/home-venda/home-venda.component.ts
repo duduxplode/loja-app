@@ -13,7 +13,6 @@ import {delay, filter} from "rxjs/operators";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 import {MatSidenav} from "@angular/material/sidenav";
 import {BreakpointObserver} from "@angular/cdk/layout";
-import {FileUploadControllerService} from "../../../api/services/file-upload-controller.service";
 
 @UntilDestroy()
 @Component({
@@ -77,6 +76,7 @@ export class HomeVendaComponent implements OnInit{
 
   public vender(computadorDto: ComputadorDto) {
     let venda = {
+      cliente: this.securityService.credential.userName,
       fkComputador: computadorDto,
       valorUnitario: computadorDto.valorVenda,
       valorTotal: computadorDto.valorVenda,
@@ -89,7 +89,7 @@ export class HomeVendaComponent implements OnInit{
         this.confirmarAcao(retorno);
       }, erro => {
         console.log("Erro:" + erro);
-        this.showError(erro.error, this.ACAO_VENDER)
+        this.mensageService.addConfirmOk(erro.parameters[0])
       });
   }
 

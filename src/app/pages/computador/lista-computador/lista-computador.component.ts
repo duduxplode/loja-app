@@ -13,7 +13,7 @@ import {MessageService} from "../../../arquitetura/message/message.service";
   styleUrls: ['./lista-computador.component.css']
 })
 export class ListaComputadorComponent implements OnInit{
-  colunasMostrar = ['id', 'descricao', 'tipo', 'quantidade', 'acao'];
+  colunasMostrar = ['id', 'descricao', 'tipo', 'quantidade', 'vendas' , 'acao'];
   computadorListaDataSource: MatTableDataSource<ComputadorDto> = new MatTableDataSource<ComputadorDto>([]);
   refreshEvento: any = null;
 
