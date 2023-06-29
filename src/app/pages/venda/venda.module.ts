@@ -8,11 +8,14 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatButtonModule} from "@angular/material/button";
+import { ListVendaComponent } from './list-venda/list-venda.component';
+import {MatTableModule} from "@angular/material/table";
 
 
 @NgModule({
   declarations: [
-    HomeVendaComponent
+    HomeVendaComponent,
+    ListVendaComponent
   ],
   exports: [
     HomeVendaComponent
@@ -24,7 +27,8 @@ import {MatButtonModule} from "@angular/material/button";
         MatIconModule,
         MatToolbarModule,
         MatSidenavModule,
-        MatButtonModule
+        MatButtonModule,
+        MatTableModule
     ]
 })
 export class VendaModule { }

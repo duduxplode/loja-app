@@ -274,7 +274,7 @@ export class RequestBuilder {
         for (const key of Object.keys(value)) {
           const val = value[key];
           if (val instanceof Array) {
-            for (const v of val) {alert();
+            for (const v of val) {
               const toAppend = this.formDataValue(v);
               if (toAppend !== null) {
                 formData.append(key, toAppend);
@@ -287,7 +287,6 @@ export class RequestBuilder {
             }
           }
         }
-        console.log(formData.get('file'));
       }
       this._bodyContent = formData;
     } else {

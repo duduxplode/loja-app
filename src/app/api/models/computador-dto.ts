@@ -5,6 +5,7 @@ export interface ComputadorDto {
   descricao?: string;
   id?: number;
   imagem?: string;
+  imagemBase64?: string;
   processador?: string;
   quantidade?: number;
   tamanhoHd?: number;

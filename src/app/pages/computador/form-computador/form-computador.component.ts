@@ -90,6 +90,7 @@ export class FormComputadorComponent {
 
   private realizarEdicao() {
     console.log("Dados edicao:", this.formGroup.value);
+    this.formGroup.value.imagem = this.file.name;
     this.computadorService.alterar1({id: this.id, body: this.formGroup.value})
       .subscribe(retorno => {
         console.log("Retorno:", retorno);
@@ -103,7 +104,7 @@ export class FormComputadorComponent {
 
   private realizarInclusao() {
     console.log("Dados inclusao:", this.formGroup.value);
-    this.formGroup.value.imagem = this.shortLink;
+    this.formGroup.value.imagem = this.file.name;
     this.computadorService.incluir1({body: this.formGroup.value})
       .subscribe(retorno => {
         console.log("Retorno:", retorno);

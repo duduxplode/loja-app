@@ -13,6 +13,7 @@ import {delay, filter} from "rxjs/operators";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 import {MatSidenav} from "@angular/material/sidenav";
 import {BreakpointObserver} from "@angular/cdk/layout";
+import {FileUploadControllerService} from "../../../api/services/file-upload-controller.service";
 
 @UntilDestroy()
 @Component({
