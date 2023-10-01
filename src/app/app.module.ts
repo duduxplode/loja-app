@@ -31,6 +31,7 @@ import {SecurityInterceptor} from "./arquitetura/security/security.interceptor";
 import {MessageModule} from "./arquitetura/message/message.module";
 import {AppInterceptor} from "./arquitetura/app.interceptor";
 import {VendaModule} from "./pages/venda/venda.module";
+import {TipoComputadorModule} from "./pages/tipo-computador/tipo-computador.module";
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import {VendaModule} from "./pages/venda/venda.module";
     MatDialogModule,
     ComputadorModule,
     VendaModule,
+    TipoComputadorModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
     AutenticacaoModule,

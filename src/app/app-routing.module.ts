@@ -5,6 +5,7 @@ import {computadorRoutes} from "./pages/computador/computador-routing.module";
 import {AutenticacaoRoutes} from "./arquitetura/autenticacao/autenticacao.routing";
 import {vendaRoutes} from "./pages/venda/venda-routing.module";
 import {HomeVendaComponent} from "./pages/venda/home-venda/home-venda.component";
+import {tipoComputadorRoutes} from "./pages/tipo-computador/tipo_computador-routing.module";
 
 const routes: Routes = [
   {
@@ -14,7 +15,7 @@ const routes: Routes = [
   {
     path : "adm",
     component : HomeComponent,
-    children: [...computadorRoutes, ...vendaRoutes]
+    children: [...computadorRoutes, ...tipoComputadorRoutes, ...vendaRoutes]
   },
   {
     path: "acesso",

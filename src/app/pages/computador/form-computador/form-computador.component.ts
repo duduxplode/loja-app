@@ -16,6 +16,8 @@ import {MessageService} from "../../../arquitetura/message/message.service";
 import {FileUploadService} from "../../../service/file-upload.service";
 import {FileUploadControllerService} from "../../../api/services/file-upload-controller.service";
 import {SecurityService} from "../../../arquitetura/security/security.service";
+import {TipoComputadorDto} from "../../../api/models/tipo-computador-dto";
+import {TipoComputadorControllerService} from "../../../api/services/tipo-computador-controller.service";
 
 @Component({
   selector: 'app-form-computador',
@@ -35,6 +37,8 @@ export class FormComputadorComponent {
   loading: boolean = false; // Flag variable
   file!: File; // Variable to store file
 
+  tipos: TipoComputadorDto[] = [];
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -44,8 +48,10 @@ export class FormComputadorComponent {
     private dialog: MatDialog,
     private mensageService: MessageService,
     private fileUploadService: FileUploadControllerService,
-    private securityService: SecurityService
+    private securityService: SecurityService,
+    private tipoComputadorService: TipoComputadorControllerService
   ) {
+    this.carregarDados();
     this.createForm();
     this._adapter.setLocale('pt-br');
     this.prepararEdicao();
@@ -70,7 +76,7 @@ export class FormComputadorComponent {
   onUpload() {
     this.loading = !this.loading;
 
-    this.fileUploadService.handleFileUpload({body: {'file': this.file}});
+    this.fileUploadService.fileUploadControllerHandleFileUpload({body: {'file': this.file}});
 
     // this.fileUploadService.upload(this.file).subscribe(
     //   (event: any) => {
@@ -93,7 +99,7 @@ export class FormComputadorComponent {
   private realizarEdicao() {
     console.log("Dados edicao:", this.formGroup.value);
     this.formGroup.value.imagem = this.file.name;
-    this.computadorService.alterar1({id: this.id, body: this.formGroup.value})
+    this.computadorService.computadorControllerAlterar({id: this.id, body: this.formGroup.value})
       .subscribe(retorno => {
         console.log("Retorno:", retorno);
         this.confirmarAcao(retorno, this.ACAO_EDITAR);
@@ -107,7 +113,7 @@ export class FormComputadorComponent {
   private realizarInclusao() {
     console.log("Dados inclusao:", this.formGroup.value);
     this.formGroup.value.imagem = this.file.name;
-    this.computadorService.incluir1({body: this.formGroup.value})
+    this.computadorService.computadorControllerIncluir({body: this.formGroup.value})
       .subscribe(retorno => {
         console.log("Retorno:", retorno);
         this.confirmarAcao(retorno, this.ACAO_INCLUIR);
@@ -128,7 +134,7 @@ export class FormComputadorComponent {
     if (paramId) {
       const codigo = parseInt(paramId);
       console.log("codigo", paramId);
-      this.computadorService.obterPorId1({id: codigo}).subscribe(
+      this.computadorService.computadorControllerObterPorId({id: codigo}).subscribe(
         retorno => {
           this.acao = this.ACAO_EDITAR;
           console.log("retorno", retorno);
@@ -151,7 +157,7 @@ export class FormComputadorComponent {
     this.formGroup = this.formBuilder.group({
       descricao: ["Dell G7", Validators.required],
       dataLancamento: [new Date(), Validators.required],
-      tipo: ["Notebook", Validators.required],
+      tipo_id: [null, Validators.required],
       processador: ["Core i7", Validators.required],
       tamanhoRam: ["16", Validators.required],
       unidadeRam: ["GB", Validators.required],
@@ -173,6 +179,13 @@ export class FormComputadorComponent {
       // quantidade: [null, Validators.required],
       imagem: [null, null],
     });
+  }
+
+  private carregarDados() {
+    //this.tipos = this.route.snapshot.data['tipos'];
+    this.tipoComputadorService.tipoComputadorControllerListAll().subscribe(value => {
+      this.tipos = value;
+    })
   }
 
 }

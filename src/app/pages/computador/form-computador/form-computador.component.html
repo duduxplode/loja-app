@@ -12,9 +12,10 @@
   <div>
   <mat-form-field class="formComputador">
     <mat-label>Tipo</mat-label>
-    <input matInput formControlName="tipo" #message maxlength="50" placeholder="Ex. Notebook...">
-    <mat-hint align="start"><strong></strong> </mat-hint>
-    <mat-hint align="end">{{message.value.length}} / 50</mat-hint>
+    <mat-select formControlName="tipo_id">
+      <mat-option>Selecione</mat-option>
+      <mat-option *ngFor="let tipo of tipos" [value]="tipo.id">{{tipo.nome}}</mat-option>
+    </mat-select>
   </mat-form-field>
   </div>
   <div>

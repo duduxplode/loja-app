@@ -9,12 +9,12 @@ import { RequestBuilder } from '../request-builder';
 import { Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 
-import { ComputadorDto } from '../models/computador-dto';
+import { TipoComputadorDto } from '../models/tipo-computador-dto';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ComputadorControllerService extends BaseService {
+export class TipoComputadorControllerService extends BaseService {
   constructor(
     config: ApiConfiguration,
     http: HttpClient
@@ -23,26 +23,26 @@ export class ComputadorControllerService extends BaseService {
   }
 
   /**
-   * Path part for operation computadorControllerObterPorId
+   * Path part for operation tipoComputadorControllerObterPorId
    */
-  static readonly ComputadorControllerObterPorIdPath = '/api/v1/computador/{id}';
+  static readonly TipoComputadorControllerObterPorIdPath = '/api/v1/tipo_computador/{id}';
 
   /**
    * Obter os dados completos de uma entidiade pelo id informado!
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `computadorControllerObterPorId()` instead.
+   * To access only the response body, use `tipoComputadorControllerObterPorId()` instead.
    *
    * This method doesn't expect any request body.
    */
-  computadorControllerObterPorId$Response(params: {
+  tipoComputadorControllerObterPorId$Response(params: {
     id: number;
   },
   context?: HttpContext
 
 ): Observable<StrictHttpResponse<any>> {
 
-    const rb = new RequestBuilder(this.rootUrl, ComputadorControllerService.ComputadorControllerObterPorIdPath, 'get');
+    const rb = new RequestBuilder(this.rootUrl, TipoComputadorControllerService.TipoComputadorControllerObterPorIdPath, 'get');
     if (params) {
       rb.path('id', params.id, {});
     }
@@ -63,44 +63,44 @@ export class ComputadorControllerService extends BaseService {
    * Obter os dados completos de uma entidiade pelo id informado!
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `computadorControllerObterPorId$Response()` instead.
+   * To access the full response (for headers, for example), `tipoComputadorControllerObterPorId$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  computadorControllerObterPorId(params: {
+  tipoComputadorControllerObterPorId(params: {
     id: number;
   },
   context?: HttpContext
 
 ): Observable<any> {
 
-    return this.computadorControllerObterPorId$Response(params,context).pipe(
+    return this.tipoComputadorControllerObterPorId$Response(params,context).pipe(
       map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 
   /**
-   * Path part for operation computadorControllerAlterar
+   * Path part for operation tipoComputadorControllerAlterar
    */
-  static readonly ComputadorControllerAlterarPath = '/api/v1/computador/{id}';
+  static readonly TipoComputadorControllerAlterarPath = '/api/v1/tipo_computador/{id}';
 
   /**
    * Método utilizado para altlerar os dados de uma entidiade
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `computadorControllerAlterar()` instead.
+   * To access only the response body, use `tipoComputadorControllerAlterar()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  computadorControllerAlterar$Response(params: {
+  tipoComputadorControllerAlterar$Response(params: {
     id: number;
-    body: ComputadorDto
+    body: TipoComputadorDto
   },
   context?: HttpContext
 
 ): Observable<StrictHttpResponse<any>> {
 
-    const rb = new RequestBuilder(this.rootUrl, ComputadorControllerService.ComputadorControllerAlterarPath, 'put');
+    const rb = new RequestBuilder(this.rootUrl, TipoComputadorControllerService.TipoComputadorControllerAlterarPath, 'put');
     if (params) {
       rb.path('id', params.id, {});
       rb.body(params.body, 'application/json');
@@ -122,44 +122,44 @@ export class ComputadorControllerService extends BaseService {
    * Método utilizado para altlerar os dados de uma entidiade
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `computadorControllerAlterar$Response()` instead.
+   * To access the full response (for headers, for example), `tipoComputadorControllerAlterar$Response()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  computadorControllerAlterar(params: {
+  tipoComputadorControllerAlterar(params: {
     id: number;
-    body: ComputadorDto
+    body: TipoComputadorDto
   },
   context?: HttpContext
 
 ): Observable<any> {
 
-    return this.computadorControllerAlterar$Response(params,context).pipe(
+    return this.tipoComputadorControllerAlterar$Response(params,context).pipe(
       map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 
   /**
-   * Path part for operation computadorControllerRemover
+   * Path part for operation tipoComputadorControllerRemover
    */
-  static readonly ComputadorControllerRemoverPath = '/api/v1/computador/{id}';
+  static readonly TipoComputadorControllerRemoverPath = '/api/v1/tipo_computador/{id}';
 
   /**
    * Método utilizado para remover uma entidiade pela id informado
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `computadorControllerRemover()` instead.
+   * To access only the response body, use `tipoComputadorControllerRemover()` instead.
    *
    * This method doesn't expect any request body.
    */
-  computadorControllerRemover$Response(params: {
+  tipoComputadorControllerRemover$Response(params: {
     id: number;
   },
   context?: HttpContext
 
 ): Observable<StrictHttpResponse<any>> {
 
-    const rb = new RequestBuilder(this.rootUrl, ComputadorControllerService.ComputadorControllerRemoverPath, 'delete');
+    const rb = new RequestBuilder(this.rootUrl, TipoComputadorControllerService.TipoComputadorControllerRemoverPath, 'delete');
     if (params) {
       rb.path('id', params.id, {});
     }
@@ -180,42 +180,42 @@ export class ComputadorControllerService extends BaseService {
    * Método utilizado para remover uma entidiade pela id informado
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `computadorControllerRemover$Response()` instead.
+   * To access the full response (for headers, for example), `tipoComputadorControllerRemover$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  computadorControllerRemover(params: {
+  tipoComputadorControllerRemover(params: {
     id: number;
   },
   context?: HttpContext
 
 ): Observable<any> {
 
-    return this.computadorControllerRemover$Response(params,context).pipe(
+    return this.tipoComputadorControllerRemover$Response(params,context).pipe(
       map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 
   /**
-   * Path part for operation computadorControllerListAll
+   * Path part for operation tipoComputadorControllerListAll
    */
-  static readonly ComputadorControllerListAllPath = '/api/v1/computador';
+  static readonly TipoComputadorControllerListAllPath = '/api/v1/tipo_computador';
 
   /**
-   * Listagem Geral de computadores
+   * Listagem Geral
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `computadorControllerListAll()` instead.
+   * To access only the response body, use `tipoComputadorControllerListAll()` instead.
    *
    * This method doesn't expect any request body.
    */
-  computadorControllerListAll$Response(params?: {
+  tipoComputadorControllerListAll$Response(params?: {
   },
   context?: HttpContext
 
-): Observable<StrictHttpResponse<Array<ComputadorDto>>> {
+): Observable<StrictHttpResponse<any>> {
 
-    const rb = new RequestBuilder(this.rootUrl, ComputadorControllerService.ComputadorControllerListAllPath, 'get');
+    const rb = new RequestBuilder(this.rootUrl, TipoComputadorControllerService.TipoComputadorControllerListAllPath, 'get');
     if (params) {
     }
 
@@ -226,51 +226,51 @@ export class ComputadorControllerService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<Array<ComputadorDto>>;
+        return r as StrictHttpResponse<any>;
       })
     );
   }
 
   /**
-   * Listagem Geral de computadores
+   * Listagem Geral
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `computadorControllerListAll$Response()` instead.
+   * To access the full response (for headers, for example), `tipoComputadorControllerListAll$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  computadorControllerListAll(params?: {
+  tipoComputadorControllerListAll(params?: {
   },
   context?: HttpContext
 
-): Observable<Array<ComputadorDto>> {
+): Observable<any> {
 
-    return this.computadorControllerListAll$Response(params,context).pipe(
-      map((r: StrictHttpResponse<Array<ComputadorDto>>) => r.body as Array<ComputadorDto>)
+    return this.tipoComputadorControllerListAll$Response(params,context).pipe(
+      map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 
   /**
-   * Path part for operation computadorControllerIncluir
+   * Path part for operation tipoComputadorControllerIncluir
    */
-  static readonly ComputadorControllerIncluirPath = '/api/v1/computador';
+  static readonly TipoComputadorControllerIncluirPath = '/api/v1/tipo_computador';
 
   /**
    * Método utilizado para realizar a inclusão de um entidade
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `computadorControllerIncluir()` instead.
+   * To access only the response body, use `tipoComputadorControllerIncluir()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  computadorControllerIncluir$Response(params: {
-    body: ComputadorDto
+  tipoComputadorControllerIncluir$Response(params: {
+    body: TipoComputadorDto
   },
   context?: HttpContext
 
 ): Observable<StrictHttpResponse<any>> {
 
-    const rb = new RequestBuilder(this.rootUrl, ComputadorControllerService.ComputadorControllerIncluirPath, 'post');
+    const rb = new RequestBuilder(this.rootUrl, TipoComputadorControllerService.TipoComputadorControllerIncluirPath, 'post');
     if (params) {
       rb.body(params.body, 'application/json');
     }
@@ -291,18 +291,18 @@ export class ComputadorControllerService extends BaseService {
    * Método utilizado para realizar a inclusão de um entidade
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `computadorControllerIncluir$Response()` instead.
+   * To access the full response (for headers, for example), `tipoComputadorControllerIncluir$Response()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  computadorControllerIncluir(params: {
-    body: ComputadorDto
+  tipoComputadorControllerIncluir(params: {
+    body: TipoComputadorDto
   },
   context?: HttpContext
 
 ): Observable<any> {
 
-    return this.computadorControllerIncluir$Response(params,context).pipe(
+    return this.tipoComputadorControllerIncluir$Response(params,context).pipe(
       map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }

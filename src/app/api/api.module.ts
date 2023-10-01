@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 
 import { VendaControllerService } from './services/venda-controller.service';
+import { TipoComputadorControllerService } from './services/tipo-computador-controller.service';
 import { ComputadorControllerService } from './services/computador-controller.service';
 import { AuthApiService } from './services/auth-api.service';
 import { FileUploadControllerService } from './services/file-upload-controller.service';
@@ -18,6 +19,7 @@ import { FileUploadControllerService } from './services/file-upload-controller.s
   declarations: [],
   providers: [
     VendaControllerService,
+    TipoComputadorControllerService,
     ComputadorControllerService,
     AuthApiService,
     FileUploadControllerService,

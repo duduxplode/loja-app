@@ -1,0 +1,13 @@
+<form [formGroup]="formGroup"
+      (ngSubmit)="onSubmit()"
+      class="form">
+  <div>
+    <mat-form-field class="formTipoComputador">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="nome" #message maxlength="50" placeholder="Ex. Notebook...">
+      <mat-hint align="start"><strong>Identificação única</strong> </mat-hint>
+      <mat-hint align="end">{{message.value.length}} / 50</mat-hint>
+    </mat-form-field>
+  </div>
+  <button mat-raised-button color="primary" type="submit">Salvar</button>
+</form>

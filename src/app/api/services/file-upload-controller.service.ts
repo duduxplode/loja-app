@@ -22,25 +22,25 @@ export class FileUploadControllerService extends BaseService {
   }
 
   /**
-   * Path part for operation listUploadedFiles
+   * Path part for operation fileUploadControllerListUploadedFiles
    */
-  static readonly ListUploadedFilesPath = '/api/v1/arquivo/';
+  static readonly FileUploadControllerListUploadedFilesPath = '/api/v1/arquivo/';
 
   /**
    * Listagem Geral de arquivos
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `listUploadedFiles()` instead.
+   * To access only the response body, use `fileUploadControllerListUploadedFiles()` instead.
    *
    * This method doesn't expect any request body.
    */
-  listUploadedFiles$Response(params?: {
+  fileUploadControllerListUploadedFiles$Response(params?: {
   },
   context?: HttpContext
 
 ): Observable<StrictHttpResponse<Array<Blob>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, FileUploadControllerService.ListUploadedFilesPath, 'get');
+    const rb = new RequestBuilder(this.rootUrl, FileUploadControllerService.FileUploadControllerListUploadedFilesPath, 'get');
     if (params) {
     }
 
@@ -60,35 +60,35 @@ export class FileUploadControllerService extends BaseService {
    * Listagem Geral de arquivos
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `listUploadedFiles$Response()` instead.
+   * To access the full response (for headers, for example), `fileUploadControllerListUploadedFiles$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  listUploadedFiles(params?: {
+  fileUploadControllerListUploadedFiles(params?: {
   },
   context?: HttpContext
 
 ): Observable<Array<Blob>> {
 
-    return this.listUploadedFiles$Response(params,context).pipe(
+    return this.fileUploadControllerListUploadedFiles$Response(params,context).pipe(
       map((r: StrictHttpResponse<Array<Blob>>) => r.body as Array<Blob>)
     );
   }
 
   /**
-   * Path part for operation handleFileUpload
+   * Path part for operation fileUploadControllerHandleFileUpload
    */
-  static readonly HandleFileUploadPath = '/api/v1/arquivo/';
+  static readonly FileUploadControllerHandleFileUploadPath = '/api/v1/arquivo/';
 
   /**
    * Adiciona um arquivo no storage
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `handleFileUpload()` instead.
+   * To access only the response body, use `fileUploadControllerHandleFileUpload()` instead.
    *
    * This method sends `multipart/form-data` and handles request body of type `multipart/form-data`.
    */
-  handleFileUpload$Response(params?: {
+  fileUploadControllerHandleFileUpload$Response(params?: {
     body?: {
 'file': Blob;
 }
@@ -97,7 +97,7 @@ export class FileUploadControllerService extends BaseService {
 
 ): Observable<StrictHttpResponse<Array<Blob>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, FileUploadControllerService.HandleFileUploadPath, 'post');
+    const rb = new RequestBuilder(this.rootUrl, FileUploadControllerService.FileUploadControllerHandleFileUploadPath, 'post');
     if (params) {
       rb.body(params.body, 'multipart/form-data');
     }
@@ -118,11 +118,11 @@ export class FileUploadControllerService extends BaseService {
    * Adiciona um arquivo no storage
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `handleFileUpload$Response()` instead.
+   * To access the full response (for headers, for example), `fileUploadControllerHandleFileUpload$Response()` instead.
    *
    * This method sends `multipart/form-data` and handles request body of type `multipart/form-data`.
    */
-  handleFileUpload(params?: {
+  fileUploadControllerHandleFileUpload(params?: {
     body?: {
 'file': Blob;
 }
@@ -131,32 +131,32 @@ export class FileUploadControllerService extends BaseService {
 
 ): Observable<Array<Blob>> {
 
-    return this.handleFileUpload$Response(params,context).pipe(
+    return this.fileUploadControllerHandleFileUpload$Response(params,context).pipe(
       map((r: StrictHttpResponse<Array<Blob>>) => r.body as Array<Blob>)
     );
   }
 
   /**
-   * Path part for operation serveFile
+   * Path part for operation fileUploadControllerServeFile
    */
-  static readonly ServeFilePath = '/api/v1/arquivo/files/{filename}';
+  static readonly FileUploadControllerServeFilePath = '/api/v1/arquivo/files/{filename}';
 
   /**
    * Busca um arquivo especifico
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `serveFile()` instead.
+   * To access only the response body, use `fileUploadControllerServeFile()` instead.
    *
    * This method doesn't expect any request body.
    */
-  serveFile$Response(params: {
+  fileUploadControllerServeFile$Response(params: {
     filename: string;
   },
   context?: HttpContext
 
 ): Observable<StrictHttpResponse<Array<Blob>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, FileUploadControllerService.ServeFilePath, 'get');
+    const rb = new RequestBuilder(this.rootUrl, FileUploadControllerService.FileUploadControllerServeFilePath, 'get');
     if (params) {
       rb.path('filename', params.filename, {});
     }
@@ -177,18 +177,18 @@ export class FileUploadControllerService extends BaseService {
    * Busca um arquivo especifico
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `serveFile$Response()` instead.
+   * To access the full response (for headers, for example), `fileUploadControllerServeFile$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  serveFile(params: {
+  fileUploadControllerServeFile(params: {
     filename: string;
   },
   context?: HttpContext
 
 ): Observable<Array<Blob>> {
 
-    return this.serveFile$Response(params,context).pipe(
+    return this.fileUploadControllerServeFile$Response(params,context).pipe(
       map((r: StrictHttpResponse<Array<Blob>>) => r.body as Array<Blob>)
     );
   }

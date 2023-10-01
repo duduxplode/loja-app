@@ -23,26 +23,26 @@ export class VendaControllerService extends BaseService {
   }
 
   /**
-   * Path part for operation obterPorId
+   * Path part for operation vendaControllerObterPorId
    */
-  static readonly ObterPorIdPath = '/api/v1/venda/{id}';
+  static readonly VendaControllerObterPorIdPath = '/api/v1/venda/{id}';
 
   /**
    * Obter os dados completos de uma venda pelo id informado!
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `obterPorId()` instead.
+   * To access only the response body, use `vendaControllerObterPorId()` instead.
    *
    * This method doesn't expect any request body.
    */
-  obterPorId$Response(params: {
+  vendaControllerObterPorId$Response(params: {
     id: number;
   },
   context?: HttpContext
 
 ): Observable<StrictHttpResponse<VendaDto>> {
 
-    const rb = new RequestBuilder(this.rootUrl, VendaControllerService.ObterPorIdPath, 'get');
+    const rb = new RequestBuilder(this.rootUrl, VendaControllerService.VendaControllerObterPorIdPath, 'get');
     if (params) {
       rb.path('id', params.id, {});
     }
@@ -63,36 +63,36 @@ export class VendaControllerService extends BaseService {
    * Obter os dados completos de uma venda pelo id informado!
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `obterPorId$Response()` instead.
+   * To access the full response (for headers, for example), `vendaControllerObterPorId$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  obterPorId(params: {
+  vendaControllerObterPorId(params: {
     id: number;
   },
   context?: HttpContext
 
 ): Observable<VendaDto> {
 
-    return this.obterPorId$Response(params,context).pipe(
+    return this.vendaControllerObterPorId$Response(params,context).pipe(
       map((r: StrictHttpResponse<VendaDto>) => r.body as VendaDto)
     );
   }
 
   /**
-   * Path part for operation alterar
+   * Path part for operation vendaControllerAlterar
    */
-  static readonly AlterarPath = '/api/v1/venda/{id}';
+  static readonly VendaControllerAlterarPath = '/api/v1/venda/{id}';
 
   /**
    * Método utilizado para altlerar os dados de uma venda
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `alterar()` instead.
+   * To access only the response body, use `vendaControllerAlterar()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  alterar$Response(params: {
+  vendaControllerAlterar$Response(params: {
     id: number;
     body: VendaDto
   },
@@ -100,7 +100,7 @@ export class VendaControllerService extends BaseService {
 
 ): Observable<StrictHttpResponse<VendaDto>> {
 
-    const rb = new RequestBuilder(this.rootUrl, VendaControllerService.AlterarPath, 'put');
+    const rb = new RequestBuilder(this.rootUrl, VendaControllerService.VendaControllerAlterarPath, 'put');
     if (params) {
       rb.path('id', params.id, {});
       rb.body(params.body, 'application/json');
@@ -122,11 +122,11 @@ export class VendaControllerService extends BaseService {
    * Método utilizado para altlerar os dados de uma venda
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `alterar$Response()` instead.
+   * To access the full response (for headers, for example), `vendaControllerAlterar$Response()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  alterar(params: {
+  vendaControllerAlterar(params: {
     id: number;
     body: VendaDto
   },
@@ -134,32 +134,32 @@ export class VendaControllerService extends BaseService {
 
 ): Observable<VendaDto> {
 
-    return this.alterar$Response(params,context).pipe(
+    return this.vendaControllerAlterar$Response(params,context).pipe(
       map((r: StrictHttpResponse<VendaDto>) => r.body as VendaDto)
     );
   }
 
   /**
-   * Path part for operation remover
+   * Path part for operation vendaControllerRemover
    */
-  static readonly RemoverPath = '/api/v1/venda/{id}';
+  static readonly VendaControllerRemoverPath = '/api/v1/venda/{id}';
 
   /**
    * Método utililzado para remover uma venda pelo Id informado
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `remover()` instead.
+   * To access only the response body, use `vendaControllerRemover()` instead.
    *
    * This method doesn't expect any request body.
    */
-  remover$Response(params: {
+  vendaControllerRemover$Response(params: {
     id: number;
   },
   context?: HttpContext
 
 ): Observable<StrictHttpResponse<VendaDto>> {
 
-    const rb = new RequestBuilder(this.rootUrl, VendaControllerService.RemoverPath, 'delete');
+    const rb = new RequestBuilder(this.rootUrl, VendaControllerService.VendaControllerRemoverPath, 'delete');
     if (params) {
       rb.path('id', params.id, {});
     }
@@ -180,42 +180,42 @@ export class VendaControllerService extends BaseService {
    * Método utililzado para remover uma venda pelo Id informado
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `remover$Response()` instead.
+   * To access the full response (for headers, for example), `vendaControllerRemover$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  remover(params: {
+  vendaControllerRemover(params: {
     id: number;
   },
   context?: HttpContext
 
 ): Observable<VendaDto> {
 
-    return this.remover$Response(params,context).pipe(
+    return this.vendaControllerRemover$Response(params,context).pipe(
       map((r: StrictHttpResponse<VendaDto>) => r.body as VendaDto)
     );
   }
 
   /**
-   * Path part for operation listAll
+   * Path part for operation vendaControllerListAll
    */
-  static readonly ListAllPath = '/api/v1/venda';
+  static readonly VendaControllerListAllPath = '/api/v1/venda';
 
   /**
    * Listagem Geral de vendas
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `listAll()` instead.
+   * To access only the response body, use `vendaControllerListAll()` instead.
    *
    * This method doesn't expect any request body.
    */
-  listAll$Response(params?: {
+  vendaControllerListAll$Response(params?: {
   },
   context?: HttpContext
 
 ): Observable<StrictHttpResponse<Array<VendaDto>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, VendaControllerService.ListAllPath, 'get');
+    const rb = new RequestBuilder(this.rootUrl, VendaControllerService.VendaControllerListAllPath, 'get');
     if (params) {
     }
 
@@ -235,42 +235,42 @@ export class VendaControllerService extends BaseService {
    * Listagem Geral de vendas
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `listAll$Response()` instead.
+   * To access the full response (for headers, for example), `vendaControllerListAll$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  listAll(params?: {
+  vendaControllerListAll(params?: {
   },
   context?: HttpContext
 
 ): Observable<Array<VendaDto>> {
 
-    return this.listAll$Response(params,context).pipe(
+    return this.vendaControllerListAll$Response(params,context).pipe(
       map((r: StrictHttpResponse<Array<VendaDto>>) => r.body as Array<VendaDto>)
     );
   }
 
   /**
-   * Path part for operation incluir
+   * Path part for operation vendaControllerIncluir
    */
-  static readonly IncluirPath = '/api/v1/venda';
+  static readonly VendaControllerIncluirPath = '/api/v1/venda';
 
   /**
    * Método utilizado para realizar a inclusão de uma venda
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `incluir()` instead.
+   * To access only the response body, use `vendaControllerIncluir()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  incluir$Response(params: {
+  vendaControllerIncluir$Response(params: {
     body: VendaDto
   },
   context?: HttpContext
 
 ): Observable<StrictHttpResponse<VendaDto>> {
 
-    const rb = new RequestBuilder(this.rootUrl, VendaControllerService.IncluirPath, 'post');
+    const rb = new RequestBuilder(this.rootUrl, VendaControllerService.VendaControllerIncluirPath, 'post');
     if (params) {
       rb.body(params.body, 'application/json');
     }
@@ -291,18 +291,18 @@ export class VendaControllerService extends BaseService {
    * Método utilizado para realizar a inclusão de uma venda
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `incluir$Response()` instead.
+   * To access the full response (for headers, for example), `vendaControllerIncluir$Response()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  incluir(params: {
+  vendaControllerIncluir(params: {
     body: VendaDto
   },
   context?: HttpContext
 
 ): Observable<VendaDto> {
 
-    return this.incluir$Response(params,context).pipe(
+    return this.vendaControllerIncluir$Response(params,context).pipe(
       map((r: StrictHttpResponse<VendaDto>) => r.body as VendaDto)
     );
   }

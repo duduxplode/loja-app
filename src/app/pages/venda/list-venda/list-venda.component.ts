@@ -25,7 +25,7 @@ export class ListVendaComponent implements OnInit{
   }
 
   public buscarDados() {
-    this.vendaService.listAll().subscribe(data => {
+    this.vendaService.vendaControllerListAll().subscribe(data => {
       console.log(data);
       this.vendaListaDataSource.data = data;
     })

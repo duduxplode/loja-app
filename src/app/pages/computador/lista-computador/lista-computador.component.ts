@@ -32,7 +32,7 @@ export class ListaComputadorComponent implements OnInit{
   }
 
   public buscarDados() {
-    this.computadorService.listAll1().subscribe(data => {
+    this.computadorService.computadorControllerListAll().subscribe(data => {
       console.log(data);
       this.computadorListaDataSource.data = data;
     })
@@ -40,7 +40,7 @@ export class ListaComputadorComponent implements OnInit{
 
   remover(computadorDto: ComputadorDto) {
     console.log("Removido", computadorDto.id);
-    this.computadorService.remover1({id: computadorDto.id || 0})
+    this.computadorService.computadorControllerRemover({id: computadorDto.id || 0})
       .subscribe(retorno => {
           this.buscarDados();
           this.showMensagemSimples("Excluído com sucesso ",5000);

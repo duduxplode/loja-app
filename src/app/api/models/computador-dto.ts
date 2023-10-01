@@ -13,7 +13,8 @@ export interface ComputadorDto {
   quantidade?: number;
   tamanhoHd?: number;
   tamanhoRam?: number;
-  tipo?: string;
+  tipo_id?: number;
+  tipo_nome?: string;
   unidadeHd?: string;
   unidadeRam?: string;
   valorCompra?: number;

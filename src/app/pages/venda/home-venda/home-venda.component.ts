@@ -68,7 +68,7 @@ export class HomeVendaComponent implements OnInit{
   }
 
   public buscarDados() {
-    this.computadorService.listAll1().subscribe(data => {
+    this.computadorService.computadorControllerListAll().subscribe(data => {
       console.log(data);
       this.computadorListaDataSource.data = data;
     })
@@ -83,7 +83,7 @@ export class HomeVendaComponent implements OnInit{
       quantidade: 1,
       dataVenda: new Date().toISOString()
     }
-    this.vendaService.incluir({body: venda})
+    this.vendaService.vendaControllerIncluir({body: venda})
       .subscribe(retorno => {
         console.log("Retorno:", retorno);
         this.confirmarAcao(retorno);
