@@ -38,6 +38,7 @@ export class FormComputadorComponent {
   file!: File; // Variable to store file
 
   tipos: TipoComputadorDto[] = [];
+  retorno!: object;
 
   constructor(
     private router: Router,
@@ -75,20 +76,13 @@ export class FormComputadorComponent {
   // OnClick of button Upload
   onUpload() {
     this.loading = !this.loading;
-
-    this.fileUploadService.fileUploadControllerHandleFileUpload({body: {'file': this.file}});
-
-    // this.fileUploadService.upload(this.file).subscribe(
-    //   (event: any) => {
-    //     if (typeof (event) === 'object') {
-    //
-    //       // Short link via api response
-    //       this.shortLink = event.link;
-    //
-    //       this.loading = false; // Flag variable
-    //     }
-    //   }
-    // );
+    //fileEnviar: new File(this.file.slice(), this.retorno[`id`]);
+    this.fileUploadService.fileUploadControllerHandleFileUpload({body: {file: this.file}})
+      .subscribe(retorno => {
+        console.log("Retorno:", retorno);
+      }, erro => {
+        console.log("Erro:", erro.error);
+      });
     return false;
   }
 
@@ -116,6 +110,8 @@ export class FormComputadorComponent {
     this.computadorService.computadorControllerIncluir({body: this.formGroup.value})
       .subscribe(retorno => {
         console.log("Retorno:", retorno);
+        this.retorno = retorno;
+        this.onUpload();
         this.confirmarAcao(retorno, this.ACAO_INCLUIR);
         this.router.navigate(["/adm/computador"]);
       }, erro => {
@@ -166,17 +162,6 @@ export class FormComputadorComponent {
       valorCompra: [3500, Validators.required],
       valorVenda: [4500, Validators.required],
       quantidade: [2, Validators.required],
-      // descricao: [null, Validators.required],
-      // dataLancamento: [new Date(), Validators.required],
-      // tipo: [null, Validators.required],
-      // processador: [null, Validators.required],
-      // tamanhoRam: [null, Validators.required],
-      // unidadeRam: [null, Validators.required],
-      // tamanhoHd: [null, Validators.required],
-      // unidadeHd: [null, Validators.required],
-      // valorCompra: [null, Validators.required],
-      // valorVenda: [null, Validators.required],
-      // quantidade: [null, Validators.required],
       imagem: [null, null],
     });
   }

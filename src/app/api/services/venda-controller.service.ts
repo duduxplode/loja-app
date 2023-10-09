@@ -28,7 +28,7 @@ export class VendaControllerService extends BaseService {
   static readonly VendaControllerObterPorIdPath = '/api/v1/venda/{id}';
 
   /**
-   * Obter os dados completos de uma venda pelo id informado!
+   * Obter os dados completos de uma entidiade pelo id informado!
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
    * To access only the response body, use `vendaControllerObterPorId()` instead.
@@ -40,7 +40,7 @@ export class VendaControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<StrictHttpResponse<VendaDto>> {
+): Observable<StrictHttpResponse<any>> {
 
     const rb = new RequestBuilder(this.rootUrl, VendaControllerService.VendaControllerObterPorIdPath, 'get');
     if (params) {
@@ -54,13 +54,13 @@ export class VendaControllerService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<VendaDto>;
+        return r as StrictHttpResponse<any>;
       })
     );
   }
 
   /**
-   * Obter os dados completos de uma venda pelo id informado!
+   * Obter os dados completos de uma entidiade pelo id informado!
    *
    * This method provides access only to the response body.
    * To access the full response (for headers, for example), `vendaControllerObterPorId$Response()` instead.
@@ -72,10 +72,10 @@ export class VendaControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<VendaDto> {
+): Observable<any> {
 
     return this.vendaControllerObterPorId$Response(params,context).pipe(
-      map((r: StrictHttpResponse<VendaDto>) => r.body as VendaDto)
+      map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 
@@ -85,7 +85,7 @@ export class VendaControllerService extends BaseService {
   static readonly VendaControllerAlterarPath = '/api/v1/venda/{id}';
 
   /**
-   * Método utilizado para altlerar os dados de uma venda
+   * Método utilizado para altlerar os dados de uma entidiade
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
    * To access only the response body, use `vendaControllerAlterar()` instead.
@@ -98,7 +98,7 @@ export class VendaControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<StrictHttpResponse<VendaDto>> {
+): Observable<StrictHttpResponse<any>> {
 
     const rb = new RequestBuilder(this.rootUrl, VendaControllerService.VendaControllerAlterarPath, 'put');
     if (params) {
@@ -113,13 +113,13 @@ export class VendaControllerService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<VendaDto>;
+        return r as StrictHttpResponse<any>;
       })
     );
   }
 
   /**
-   * Método utilizado para altlerar os dados de uma venda
+   * Método utilizado para altlerar os dados de uma entidiade
    *
    * This method provides access only to the response body.
    * To access the full response (for headers, for example), `vendaControllerAlterar$Response()` instead.
@@ -132,10 +132,10 @@ export class VendaControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<VendaDto> {
+): Observable<any> {
 
     return this.vendaControllerAlterar$Response(params,context).pipe(
-      map((r: StrictHttpResponse<VendaDto>) => r.body as VendaDto)
+      map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 
@@ -145,7 +145,7 @@ export class VendaControllerService extends BaseService {
   static readonly VendaControllerRemoverPath = '/api/v1/venda/{id}';
 
   /**
-   * Método utililzado para remover uma venda pelo Id informado
+   * Método utilizado para remover uma entidiade pela id informado
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
    * To access only the response body, use `vendaControllerRemover()` instead.
@@ -157,7 +157,7 @@ export class VendaControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<StrictHttpResponse<VendaDto>> {
+): Observable<StrictHttpResponse<any>> {
 
     const rb = new RequestBuilder(this.rootUrl, VendaControllerService.VendaControllerRemoverPath, 'delete');
     if (params) {
@@ -165,19 +165,19 @@ export class VendaControllerService extends BaseService {
     }
 
     return this.http.request(rb.build({
-      responseType: 'blob',
-      accept: '*/*',
+      responseType: 'json',
+      accept: 'application/json',
       context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<VendaDto>;
+        return r as StrictHttpResponse<any>;
       })
     );
   }
 
   /**
-   * Método utililzado para remover uma venda pelo Id informado
+   * Método utilizado para remover uma entidiade pela id informado
    *
    * This method provides access only to the response body.
    * To access the full response (for headers, for example), `vendaControllerRemover$Response()` instead.
@@ -189,10 +189,10 @@ export class VendaControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<VendaDto> {
+): Observable<any> {
 
     return this.vendaControllerRemover$Response(params,context).pipe(
-      map((r: StrictHttpResponse<VendaDto>) => r.body as VendaDto)
+      map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 
@@ -202,7 +202,7 @@ export class VendaControllerService extends BaseService {
   static readonly VendaControllerListAllPath = '/api/v1/venda';
 
   /**
-   * Listagem Geral de vendas
+   * Listagem Geral
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
    * To access only the response body, use `vendaControllerListAll()` instead.
@@ -213,7 +213,7 @@ export class VendaControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<StrictHttpResponse<Array<VendaDto>>> {
+): Observable<StrictHttpResponse<any>> {
 
     const rb = new RequestBuilder(this.rootUrl, VendaControllerService.VendaControllerListAllPath, 'get');
     if (params) {
@@ -226,13 +226,13 @@ export class VendaControllerService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<Array<VendaDto>>;
+        return r as StrictHttpResponse<any>;
       })
     );
   }
 
   /**
-   * Listagem Geral de vendas
+   * Listagem Geral
    *
    * This method provides access only to the response body.
    * To access the full response (for headers, for example), `vendaControllerListAll$Response()` instead.
@@ -243,10 +243,10 @@ export class VendaControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<Array<VendaDto>> {
+): Observable<any> {
 
     return this.vendaControllerListAll$Response(params,context).pipe(
-      map((r: StrictHttpResponse<Array<VendaDto>>) => r.body as Array<VendaDto>)
+      map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 
@@ -256,7 +256,7 @@ export class VendaControllerService extends BaseService {
   static readonly VendaControllerIncluirPath = '/api/v1/venda';
 
   /**
-   * Método utilizado para realizar a inclusão de uma venda
+   * Método utilizado para realizar a inclusão de um entidade
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
    * To access only the response body, use `vendaControllerIncluir()` instead.
@@ -268,7 +268,7 @@ export class VendaControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<StrictHttpResponse<VendaDto>> {
+): Observable<StrictHttpResponse<any>> {
 
     const rb = new RequestBuilder(this.rootUrl, VendaControllerService.VendaControllerIncluirPath, 'post');
     if (params) {
@@ -282,13 +282,13 @@ export class VendaControllerService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<VendaDto>;
+        return r as StrictHttpResponse<any>;
       })
     );
   }
 
   /**
-   * Método utilizado para realizar a inclusão de uma venda
+   * Método utilizado para realizar a inclusão de um entidade
    *
    * This method provides access only to the response body.
    * To access the full response (for headers, for example), `vendaControllerIncluir$Response()` instead.
@@ -300,10 +300,10 @@ export class VendaControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<VendaDto> {
+): Observable<any> {
 
     return this.vendaControllerIncluir$Response(params,context).pipe(
-      map((r: StrictHttpResponse<VendaDto>) => r.body as VendaDto)
+      map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 
