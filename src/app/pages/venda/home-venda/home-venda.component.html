@@ -39,15 +39,23 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <div class="content mat-elevation-z8 " >
-      <mat-list>
-        <mat-list-item *ngFor="let computador of computadorListaDataSource.data" style="height: auto; vertical-align: middle;">
-          <img src="data:image/jpeg;base64,{{computador.imagemBase64}}" width="15%"/>
-          {{computador.descricao}}
-          <button mat-raised-button (click)="vender(computador)">
-            <mat-icon>add_shopping_cart</mat-icon>
-          </button>
-        </mat-list-item>
-      </mat-list>
+      <mat-grid-list cols="4" >
+        <mat-grid-tile *ngFor="let computador of computadorListaDataSource.data" style="height: auto; vertical-align: middle;">
+          <table class="tabela-produtos">
+            <tr><td>
+             <img src="data:image/jpeg;base64,{{computador.imagemBase64}}" width="50%"/>
+            </td></tr>
+            <tr><td>
+              {{computador.descricao}}
+            </td></tr>
+            <tr><td>
+              <button mat-raised-button (click)="vender(computador)">
+                <mat-icon>add_shopping_cart</mat-icon>
+              </button>
+            </td></tr>
+          </table>
+        </mat-grid-tile>
+      </mat-grid-list>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

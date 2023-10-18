@@ -22,6 +22,70 @@ export class FileUploadControllerService extends BaseService {
   }
 
   /**
+   * Path part for operation fileUploadControllerHandleFileRenameUpload
+   */
+  static readonly FileUploadControllerHandleFileRenameUploadPath = '/api/v1/arquivo/{filename}';
+
+  /**
+   * Adiciona um arquivo renomeado no storage
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `fileUploadControllerHandleFileRenameUpload()` instead.
+   *
+   * This method sends `multipart/form-data` and handles request body of type `multipart/form-data`.
+   */
+  fileUploadControllerHandleFileRenameUpload$Response(params: {
+    filename: string;
+    body?: {
+'file': Blob;
+}
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<Array<Blob>>> {
+
+    const rb = new RequestBuilder(this.rootUrl, FileUploadControllerService.FileUploadControllerHandleFileRenameUploadPath, 'post');
+    if (params) {
+      rb.path('filename', params.filename, {});
+      rb.body(params.body, 'multipart/form-data');
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'blob',
+      accept: 'multipart/form-data',
+      context: context
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Array<Blob>>;
+      })
+    );
+  }
+
+  /**
+   * Adiciona um arquivo renomeado no storage
+   *
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `fileUploadControllerHandleFileRenameUpload$Response()` instead.
+   *
+   * This method sends `multipart/form-data` and handles request body of type `multipart/form-data`.
+   */
+  fileUploadControllerHandleFileRenameUpload(params: {
+    filename: string;
+    body?: {
+'file': Blob;
+}
+  },
+  context?: HttpContext
+
+): Observable<Array<Blob>> {
+
+    return this.fileUploadControllerHandleFileRenameUpload$Response(params,context).pipe(
+      map((r: StrictHttpResponse<Array<Blob>>) => r.body as Array<Blob>)
+    );
+  }
+
+  /**
    * Path part for operation fileUploadControllerListUploadedFiles
    */
   static readonly FileUploadControllerListUploadedFilesPath = '/api/v1/arquivo/';

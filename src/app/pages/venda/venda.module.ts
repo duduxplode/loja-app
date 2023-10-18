@@ -10,6 +10,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatButtonModule} from "@angular/material/button";
 import { ListVendaComponent } from './list-venda/list-venda.component';
 import {MatTableModule} from "@angular/material/table";
+import {MatGridListModule} from "@angular/material/grid-list";
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import {MatTableModule} from "@angular/material/table";
         MatToolbarModule,
         MatSidenavModule,
         MatButtonModule,
-        MatTableModule
+        MatTableModule,
+        MatGridListModule
     ]
 })
 export class VendaModule { }

@@ -74,10 +74,9 @@ export class FormComputadorComponent {
   }
 
   // OnClick of button Upload
-  onUpload() {
+  onUpload(id: string) {
     this.loading = !this.loading;
-    //fileEnviar: new File(this.file.slice(), this.retorno[`id`]);
-    this.fileUploadService.fileUploadControllerHandleFileUpload({body: {file: this.file}})
+    this.fileUploadService.fileUploadControllerHandleFileRenameUpload({filename: id,body: {file: this.file}})
       .subscribe(retorno => {
         console.log("Retorno:", retorno);
       }, erro => {
@@ -92,7 +91,6 @@ export class FormComputadorComponent {
 
   private realizarEdicao() {
     console.log("Dados edicao:", this.formGroup.value);
-    this.formGroup.value.imagem = this.file.name;
     this.computadorService.computadorControllerAlterar({id: this.id, body: this.formGroup.value})
       .subscribe(retorno => {
         console.log("Retorno:", retorno);
@@ -106,12 +104,10 @@ export class FormComputadorComponent {
 
   private realizarInclusao() {
     console.log("Dados inclusao:", this.formGroup.value);
-    this.formGroup.value.imagem = this.file.name;
     this.computadorService.computadorControllerIncluir({body: this.formGroup.value})
       .subscribe(retorno => {
         console.log("Retorno:", retorno);
-        this.retorno = retorno;
-        this.onUpload();
+        this.onUpload(retorno.id);
         this.confirmarAcao(retorno, this.ACAO_INCLUIR);
         this.router.navigate(["/adm/computador"]);
       }, erro => {
