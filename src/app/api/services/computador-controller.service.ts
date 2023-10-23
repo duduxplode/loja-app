@@ -256,7 +256,7 @@ export class ComputadorControllerService extends BaseService {
   static readonly ComputadorControllerIncluirPath = '/api/v1/computador';
 
   /**
-   * Método utilizado para realizar a inclusão de um entidade
+   * Método utilizado para realizar a inclusão de um computador
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
    * To access only the response body, use `computadorControllerIncluir()` instead.
@@ -288,7 +288,7 @@ export class ComputadorControllerService extends BaseService {
   }
 
   /**
-   * Método utilizado para realizar a inclusão de um entidade
+   * Método utilizado para realizar a inclusão de um computador
    *
    * This method provides access only to the response body.
    * To access the full response (for headers, for example), `computadorControllerIncluir$Response()` instead.
