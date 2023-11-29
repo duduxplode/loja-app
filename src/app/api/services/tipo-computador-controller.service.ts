@@ -9,6 +9,9 @@ import { RequestBuilder } from '../request-builder';
 import { Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 
+import { Pageable } from '../models/pageable';
+import { SearchField } from '../models/search-field';
+import { SearchFieldValue } from '../models/search-field-value';
 import { TipoComputadorDto } from '../models/tipo-computador-dto';
 
 @Injectable({
@@ -197,6 +200,180 @@ export class TipoComputadorControllerService extends BaseService {
   }
 
   /**
+   * Path part for operation tipoComputadorControllerObterPorIdHash
+   */
+  static readonly TipoComputadorControllerObterPorIdHashPath = '/api/v1/tipo_computador/hash/{id}';
+
+  /**
+   * Obter os dados completos de uma entidiade pelo id informado!
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `tipoComputadorControllerObterPorIdHash()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  tipoComputadorControllerObterPorIdHash$Response(params: {
+    id: string;
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<any>> {
+
+    const rb = new RequestBuilder(this.rootUrl, TipoComputadorControllerService.TipoComputadorControllerObterPorIdHashPath, 'get');
+    if (params) {
+      rb.path('id', params.id, {});
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'application/json',
+      context: context
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<any>;
+      })
+    );
+  }
+
+  /**
+   * Obter os dados completos de uma entidiade pelo id informado!
+   *
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `tipoComputadorControllerObterPorIdHash$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  tipoComputadorControllerObterPorIdHash(params: {
+    id: string;
+  },
+  context?: HttpContext
+
+): Observable<any> {
+
+    return this.tipoComputadorControllerObterPorIdHash$Response(params,context).pipe(
+      map((r: StrictHttpResponse<any>) => r.body as any)
+    );
+  }
+
+  /**
+   * Path part for operation tipoComputadorControllerAlterarIdHash
+   */
+  static readonly TipoComputadorControllerAlterarIdHashPath = '/api/v1/tipo_computador/hash/{id}';
+
+  /**
+   * Método utilizado para altlerar os dados de uma entidiade
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `tipoComputadorControllerAlterarIdHash()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  tipoComputadorControllerAlterarIdHash$Response(params: {
+    id: string;
+    body: TipoComputadorDto
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<any>> {
+
+    const rb = new RequestBuilder(this.rootUrl, TipoComputadorControllerService.TipoComputadorControllerAlterarIdHashPath, 'put');
+    if (params) {
+      rb.path('id', params.id, {});
+      rb.body(params.body, 'application/json');
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'application/json',
+      context: context
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<any>;
+      })
+    );
+  }
+
+  /**
+   * Método utilizado para altlerar os dados de uma entidiade
+   *
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `tipoComputadorControllerAlterarIdHash$Response()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  tipoComputadorControllerAlterarIdHash(params: {
+    id: string;
+    body: TipoComputadorDto
+  },
+  context?: HttpContext
+
+): Observable<any> {
+
+    return this.tipoComputadorControllerAlterarIdHash$Response(params,context).pipe(
+      map((r: StrictHttpResponse<any>) => r.body as any)
+    );
+  }
+
+  /**
+   * Path part for operation tipoComputadorControllerRemoverIdHash
+   */
+  static readonly TipoComputadorControllerRemoverIdHashPath = '/api/v1/tipo_computador/hash/{id}';
+
+  /**
+   * Método utilizado para remover uma entidiade pela id informado
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `tipoComputadorControllerRemoverIdHash()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  tipoComputadorControllerRemoverIdHash$Response(params: {
+    id: string;
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<any>> {
+
+    const rb = new RequestBuilder(this.rootUrl, TipoComputadorControllerService.TipoComputadorControllerRemoverIdHashPath, 'delete');
+    if (params) {
+      rb.path('id', params.id, {});
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'application/json',
+      context: context
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<any>;
+      })
+    );
+  }
+
+  /**
+   * Método utilizado para remover uma entidiade pela id informado
+   *
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `tipoComputadorControllerRemoverIdHash$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  tipoComputadorControllerRemoverIdHash(params: {
+    id: string;
+  },
+  context?: HttpContext
+
+): Observable<any> {
+
+    return this.tipoComputadorControllerRemoverIdHash$Response(params,context).pipe(
+      map((r: StrictHttpResponse<any>) => r.body as any)
+    );
+  }
+
+  /**
    * Path part for operation tipoComputadorControllerListAll
    */
   static readonly TipoComputadorControllerListAllPath = '/api/v1/tipo_computador';
@@ -303,6 +480,174 @@ export class TipoComputadorControllerService extends BaseService {
 ): Observable<any> {
 
     return this.tipoComputadorControllerIncluir$Response(params,context).pipe(
+      map((r: StrictHttpResponse<any>) => r.body as any)
+    );
+  }
+
+  /**
+   * Path part for operation tipoComputadorControllerSearchFieldsList
+   */
+  static readonly TipoComputadorControllerSearchFieldsListPath = '/api/v1/tipo_computador/search-fields';
+
+  /**
+   * Listagem dos campos de busca
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `tipoComputadorControllerSearchFieldsList()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  tipoComputadorControllerSearchFieldsList$Response(params?: {
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<Array<SearchField>>> {
+
+    const rb = new RequestBuilder(this.rootUrl, TipoComputadorControllerService.TipoComputadorControllerSearchFieldsListPath, 'get');
+    if (params) {
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'application/json',
+      context: context
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Array<SearchField>>;
+      })
+    );
+  }
+
+  /**
+   * Listagem dos campos de busca
+   *
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `tipoComputadorControllerSearchFieldsList$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  tipoComputadorControllerSearchFieldsList(params?: {
+  },
+  context?: HttpContext
+
+): Observable<Array<SearchField>> {
+
+    return this.tipoComputadorControllerSearchFieldsList$Response(params,context).pipe(
+      map((r: StrictHttpResponse<Array<SearchField>>) => r.body as Array<SearchField>)
+    );
+  }
+
+  /**
+   * Path part for operation tipoComputadorControllerSearchFieldsAction
+   */
+  static readonly TipoComputadorControllerSearchFieldsActionPath = '/api/v1/tipo_computador/search-fields';
+
+  /**
+   * Realiza a busca pelos valores dos campos informados
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `tipoComputadorControllerSearchFieldsAction()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  tipoComputadorControllerSearchFieldsAction$Response(params: {
+    body: Array<SearchFieldValue>
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<any>> {
+
+    const rb = new RequestBuilder(this.rootUrl, TipoComputadorControllerService.TipoComputadorControllerSearchFieldsActionPath, 'post');
+    if (params) {
+      rb.body(params.body, 'application/json');
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'application/json',
+      context: context
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<any>;
+      })
+    );
+  }
+
+  /**
+   * Realiza a busca pelos valores dos campos informados
+   *
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `tipoComputadorControllerSearchFieldsAction$Response()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  tipoComputadorControllerSearchFieldsAction(params: {
+    body: Array<SearchFieldValue>
+  },
+  context?: HttpContext
+
+): Observable<any> {
+
+    return this.tipoComputadorControllerSearchFieldsAction$Response(params,context).pipe(
+      map((r: StrictHttpResponse<any>) => r.body as any)
+    );
+  }
+
+  /**
+   * Path part for operation tipoComputadorControllerListAllPage
+   */
+  static readonly TipoComputadorControllerListAllPagePath = '/api/v1/tipo_computador/page';
+
+  /**
+   * Listagem Geral paginada
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `tipoComputadorControllerListAllPage()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  tipoComputadorControllerListAllPage$Response(params: {
+    page: Pageable;
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<any>> {
+
+    const rb = new RequestBuilder(this.rootUrl, TipoComputadorControllerService.TipoComputadorControllerListAllPagePath, 'get');
+    if (params) {
+      rb.query('page', params.page, {});
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'application/json',
+      context: context
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<any>;
+      })
+    );
+  }
+
+  /**
+   * Listagem Geral paginada
+   *
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `tipoComputadorControllerListAllPage$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  tipoComputadorControllerListAllPage(params: {
+    page: Pageable;
+  },
+  context?: HttpContext
+
+): Observable<any> {
+
+    return this.tipoComputadorControllerListAllPage$Response(params,context).pipe(
       map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }

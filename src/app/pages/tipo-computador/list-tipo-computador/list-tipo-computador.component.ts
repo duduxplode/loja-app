@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {ComputadorDto} from "../../../api/models/computador-dto";
 import {TipoComputadorDto} from "../../../api/models/tipo-computador-dto";
@@ -8,6 +8,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {MessageService} from "../../../arquitetura/message/message.service";
 import {TipoComputadorControllerService} from "../../../api/services/tipo-computador-controller.service";
 import {EventEmitterService} from "../../../service/EventEmitterService";
+import {MatPaginator} from "@angular/material/paginator";
 
 @Component({
   selector: 'app-list-tipo-computador',
@@ -16,8 +17,11 @@ import {EventEmitterService} from "../../../service/EventEmitterService";
 })
 export class ListTipoComputadorComponent implements OnInit{
   colunasMostrar = ['id', 'nome'];
+  public dataSource: MatTableDataSource<TipoComputadorDto> = new MatTableDataSource<TipoComputadorDto>([]);
   tipoComputadorListaDataSource: MatTableDataSource<TipoComputadorDto> = new MatTableDataSource<TipoComputadorDto>([]);
   refreshEvento: any = null;
+
+  @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
 
   constructor(
     public tipoComputadorService: TipoComputadorControllerService,
@@ -67,4 +71,8 @@ export class ListTipoComputadorComponent implements OnInit{
     this.messageService.addMsgInf(mensagem);
   }
 
+  showResult($event: any[]) {
+    console.log($event);
+    this.tipoComputadorListaDataSource.data = $event;
+  }
 }

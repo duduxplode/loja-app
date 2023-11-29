@@ -14,6 +14,8 @@ import {MatCardModule} from "@angular/material/card";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import {SearchModule} from "../../arquitetura/search-module/search.module";
+import {FlexModule} from "@angular/flex-layout";
 
 
 
@@ -39,7 +41,9 @@ import {MatInputModule} from "@angular/material/input";
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SearchModule,
+    FlexModule
   ]
 })
 export class TipoComputadorModule { }

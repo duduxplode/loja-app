@@ -13,6 +13,7 @@ import {delay, filter} from "rxjs/operators";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 import {MatSidenav} from "@angular/material/sidenav";
 import {BreakpointObserver} from "@angular/cdk/layout";
+import {CartService} from '../../carrinho/carrinho.service';
 
 @UntilDestroy()
 @Component({
@@ -26,6 +27,10 @@ export class HomeVendaComponent implements OnInit{
   public readonly ACAO_VENDER = "Incluir";
   computadorListaDataSource: MatTableDataSource<ComputadorDto> = new MatTableDataSource<ComputadorDto>([]);
   refreshEvento: any = null;
+  items(){
+    return this.cartService.items.length > 0 ? this.cartService.items.length : ""
+
+  }
 
   constructor(
     public computadorService: ComputadorControllerService,
@@ -33,7 +38,8 @@ export class HomeVendaComponent implements OnInit{
     private mensageService: MessageService,
     private observer: BreakpointObserver,
     private router: Router,
-    public securityService: SecurityService
+    public securityService: SecurityService,
+    private cartService: CartService
   ){}
 
   ngOnInit(): void {

@@ -1,4 +1,7 @@
 <section class="example-container mat-elevation-z8" tabindex="0">
+  <div>
+    <app-search-component fxFlex [controller]="tipoComputadorService"  (onSearchResult)="showResult($event)"/>
+  </div>
   <table mat-table [dataSource]="tipoComputadorListaDataSource">
 
     <!-- Id Column -->

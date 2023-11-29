@@ -11,12 +11,16 @@ import {MatButtonModule} from "@angular/material/button";
 import { ListVendaComponent } from './list-venda/list-venda.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatGridListModule} from "@angular/material/grid-list";
+import {CartService} from "../carrinho/carrinho.service";
 
 
 @NgModule({
   declarations: [
     HomeVendaComponent,
     ListVendaComponent
+  ],
+  providers: [
+    CartService
   ],
   exports: [
     HomeVendaComponent

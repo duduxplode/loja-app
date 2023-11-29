@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID, NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -32,12 +32,16 @@ import {MessageModule} from "./arquitetura/message/message.module";
 import {AppInterceptor} from "./arquitetura/app.interceptor";
 import {VendaModule} from "./pages/venda/venda.module";
 import {TipoComputadorModule} from "./pages/tipo-computador/tipo-computador.module";
+import { CarrinhoComponent } from './pages/carrinho/carrinho.component';
+import {ValidationResourceProvider} from "./adminmodule/shared/validation/validation.resource";
+import {AppMessage} from "./adminmodule/app.message";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoaderDialogComponent
+    LoaderDialogComponent,
+    CarrinhoComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +91,15 @@ import {TipoComputadorModule} from "./pages/tipo-computador/tipo-computador.modu
       useClass: SecurityInterceptor,
       multi: true
     },
+    {
+      provide: ValidationResourceProvider,
+      useValue: AppMessage,
+    },
+    {
+      provide: LOCALE_ID, useValue: 'pt'
+    }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class AppModule { }
