@@ -11,9 +11,23 @@
     <mat-icon> home </mat-icon>
   </button>
   Loja de computadores
-  <button mat-icon-button routerLink="/adm" >
-    <mat-icon> shopping_cart </mat-icon>
-  </button>
+<!--  <button mat-icon-button routerLink="/" >-->
+<!--    <mat-icon> shopping_cart </mat-icon>{{items()}}-->
+<!--  </button>-->
+  <nav class="navbar navbar-main navbar-fixed-top bg-primary">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+      <span class="badge badge-pill badge-danger circle count-items-cart">{{items()}}</span>
+    </button>
+    <a class="navbar-brand logo" href="#">
+      <mat-icon> shopping_cart </mat-icon>
+    </a>
+    <div class="navbar-collapse collapse" id="mainNav">
+      <app-carrinho></app-carrinho>
+
+    </div>
+  </nav>
+
 </mat-toolbar>
 
 <mat-sidenav-container>
@@ -52,7 +66,7 @@
               {{computador.descricao}}
             </td></tr>
             <tr><td>
-              <button mat-flat-button color="primary" (click)="vender(computador)">
+              <button mat-flat-button color="primary" (click)="addCart(computador)">
                 <mat-icon>add_shopping_cart</mat-icon> Comprar
               </button>
             </td></tr>

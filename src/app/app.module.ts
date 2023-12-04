@@ -40,8 +40,7 @@ import {AppMessage} from "./adminmodule/app.message";
   declarations: [
     AppComponent,
     HomeComponent,
-    LoaderDialogComponent,
-    CarrinhoComponent
+    LoaderDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -100,6 +99,6 @@ import {AppMessage} from "./adminmodule/app.message";
     }
   ],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
 export class AppModule { }

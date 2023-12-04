@@ -12,29 +12,33 @@ import { ListVendaComponent } from './list-venda/list-venda.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {CartService} from "../carrinho/carrinho.service";
+import {AppModule} from "../../app.module";
+import {CarrinhoComponent} from "../carrinho/carrinho.component";
 
 
 @NgModule({
   declarations: [
     HomeVendaComponent,
-    ListVendaComponent
+    ListVendaComponent,
+    CarrinhoComponent
   ],
   providers: [
     CartService
   ],
   exports: [
-    HomeVendaComponent
+    HomeVendaComponent,
+    CarrinhoComponent
   ],
-    imports: [
-        CommonModule,
-        VendaRoutingModule,
-        MatListModule,
-        MatIconModule,
-        MatToolbarModule,
-        MatSidenavModule,
-        MatButtonModule,
-        MatTableModule,
-        MatGridListModule
-    ]
+  imports: [
+    CommonModule,
+    VendaRoutingModule,
+    MatListModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatTableModule,
+    MatGridListModule
+  ]
 })
 export class VendaModule { }

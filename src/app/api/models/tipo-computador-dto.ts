@@ -1,6 +1,19 @@
 /* tslint:disable */
 /* eslint-disable */
 export interface TipoComputadorDto {
-  id?: number;
-  nome?: string;
+
+  /**
+   * Número identificador do tipo
+   */
+  id: number;
+
+  /**
+   * Identificador do objeto em Hash
+   */
+  idHash?: string;
+
+  /**
+   * Nome do tipo
+   */
+  nome: string;
 }

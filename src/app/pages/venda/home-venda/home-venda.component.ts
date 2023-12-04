@@ -80,6 +80,12 @@ export class HomeVendaComponent implements OnInit{
     })
   }
 
+  addCart(computadorDto: ComputadorDto){
+    // NProgress.start()
+    this.cartService.addItem(computadorDto)
+    // NProgress.done()
+  }
+
   public vender(computadorDto: ComputadorDto) {
     let venda = {
       cliente: this.securityService.credential.userName,
