@@ -4,13 +4,15 @@ import {HomeComponent} from "./pages/home/home.component";
 import {computadorRoutes} from "./pages/computador/computador-routing.module";
 import {AutenticacaoRoutes} from "./arquitetura/autenticacao/autenticacao.routing";
 import {vendaRoutes} from "./pages/venda/venda-routing.module";
-import {HomeVendaComponent} from "./pages/venda/home-venda/home-venda.component";
+import {HomeLojaComponent} from "./pages/loja/home-loja/home-loja.component";
 import {tipoComputadorRoutes} from "./pages/tipo-computador/tipo_computador-routing.module";
+import {lojaRoutes} from "./pages/loja/loja-routing.module";
 
 const routes: Routes = [
   {
     path : "",
-    component : HomeVendaComponent
+    component : HomeLojaComponent,
+    children : [...lojaRoutes]
   },
   {
     path : "adm",
@@ -22,7 +24,6 @@ const routes: Routes = [
     children: [
       ...AutenticacaoRoutes
     ]
-
   }
 ];
 

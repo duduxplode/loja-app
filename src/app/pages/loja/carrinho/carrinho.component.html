@@ -1,7 +1,8 @@
 <ul class="navbar-nav cart-items" *ngIf="items().length">
   <li class="nav-item" *ngFor="let computadorDto of items()">
     <div class="media">
-      <img class="img-thumb" src="data:image/jpeg;base64,{{computadorDto.imagemBase64}}" onError="this.src='/assets/img/no-img.jpg';" alt="{{computadorDto.descricao}}">
+      <img class="img-thumb" src="data:image/jpeg;base64,{{computadorDto.imagemBase64}}"
+           onError="this.src='/assets/img/no-img.jpg';" alt="{{computadorDto.descricao}}" width="10%">
       <div class="media-body">
         <h5 class="mt-0">{{computadorDto.descricao}} </h5>
         <span>1x de {{computadorDto.valorVenda}}</span>
@@ -12,6 +13,11 @@
   <li class="total-cart text-right">
     <p>subtotal</p>
     <span id="sub-cash">{{total()}} à vista</span>
+  </li>
+  <li>
+    <button mat-flat-button color="primary" (click)="comprar()">
+      <mat-icon>add_shopping_cart</mat-icon> Comprar
+    </button>
   </li>
 </ul>
 <ul class="navbar-nav cart-items" *ngIf="items().length == 0">

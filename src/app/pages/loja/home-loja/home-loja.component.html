@@ -1,0 +1,60 @@
+<mat-toolbar class="mat-elevation-z8">
+  <button
+    mat-icon-button
+    *ngIf="sidenav.mode === 'over'"
+    (click)="sidenav.toggle()"
+  >
+    <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+    <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+  </button>
+  <button mat-icon-button routerLink="/" >
+    <mat-icon> home </mat-icon>
+  </button>
+  Loja de computadores
+  <button mat-icon-button routerLink="/carrinho" >
+    <mat-icon> shopping_cart </mat-icon>{{items()}}
+  </button>
+<!--  <nav class="navbar navbar-main navbar-fixed-top bg-primary">-->
+<!--    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#mainNav">-->
+<!--      <span class="navbar-toggler-icon"></span>-->
+<!--      <span class="badge badge-pill badge-danger circle count-items-cart">{{items()}}</span>-->
+<!--    </button>-->
+<!--    <a class="navbar-brand logo" href="#">-->
+<!--      <mat-icon> shopping_cart </mat-icon>-->
+<!--    </a>-->
+<!--    <div class="navbar-collapse collapse" id="mainNav">-->
+<!--      <app-carrinho></app-carrinho>-->
+
+<!--    </div>-->
+<!--  </nav>-->
+
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+
+    <button mat-button class="menu-button" routerLink="/">
+      <mat-icon>home</mat-icon>
+      <span>Home</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/adm"
+            *ngIf="securityService.hasRoles('ROLE_ADMIN')">
+      <mat-icon>person</mat-icon>
+      <span>Administrativo</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/about">
+      <mat-icon>info</mat-icon>
+      <span>About</span>
+    </button>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" (click)="sair()">
+      <mat-icon>logout</mat-icon>
+      <span>Sair</span>
+    </button>
+  </mat-sidenav>
+  <mat-card-content>
+    <router-outlet></router-outlet>
+  </mat-card-content>
+</mat-sidenav-container>

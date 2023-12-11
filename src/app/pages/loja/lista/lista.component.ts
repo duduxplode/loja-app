@@ -1,36 +1,31 @@
-import {Component, Inject, OnInit, ViewChild} from '@angular/core';
-import {MatTableDataSource} from "@angular/material/table";
-import {ComputadorDto} from "../../../api/models/computador-dto";
-import {EventEmitterService} from "../../../service/EventEmitterService";
-import {ComputadorControllerService} from "../../../api/services/computador-controller.service";
-import {VendaControllerService} from "../../../api/services/venda-controller.service";
-import {VendaDto} from "../../../api/models/venda-dto";
-import {MessageService} from "../../../arquitetura/message/message.service";
-import {MessageResponse} from "../../../api/models/message-response";
-import {NavigationEnd, Router} from "@angular/router";
-import {SecurityService} from "../../../arquitetura/security/security.service";
-import {delay, filter} from "rxjs/operators";
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 import {MatSidenav} from "@angular/material/sidenav";
+import {MatTableDataSource} from "@angular/material/table";
+import {ComputadorDto} from "../../../api/models/computador-dto";
+import {ComputadorControllerService} from "../../../api/services/computador-controller.service";
+import {VendaControllerService} from "../../../api/services/venda-controller.service";
+import {MessageService} from "../../../arquitetura/message/message.service";
 import {BreakpointObserver} from "@angular/cdk/layout";
-import {CartService} from '../../carrinho/carrinho.service';
+import {NavigationEnd, Router} from "@angular/router";
+import {SecurityService} from "../../../arquitetura/security/security.service";
+import {CartService} from "../carrinho/carrinho.service";
+import {EventEmitterService} from "../../../service/EventEmitterService";
+import {delay, filter} from "rxjs/operators";
+import {VendaDto} from "../../../api/models/venda-dto";
+import {MessageResponse} from "../../../api/models/message-response";
 
-@UntilDestroy()
 @Component({
-  selector: 'app-home-venda',
-  templateUrl: './home-venda.component.html',
-  styleUrls: ['./home-venda.component.scss']
+  selector: 'app-lista',
+  templateUrl: './lista.component.html',
+  styleUrls: ['./lista.component.css']
 })
-export class HomeVendaComponent implements OnInit{
+export class ListaComponent implements OnInit{
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   public readonly ACAO_VENDER = "Incluir";
   computadorListaDataSource: MatTableDataSource<ComputadorDto> = new MatTableDataSource<ComputadorDto>([]);
   refreshEvento: any = null;
-  items(){
-    return this.cartService.items.length > 0 ? this.cartService.items.length : ""
-
-  }
 
   constructor(
     public computadorService: ComputadorControllerService,
@@ -86,35 +81,9 @@ export class HomeVendaComponent implements OnInit{
     // NProgress.done()
   }
 
-  public vender(computadorDto: ComputadorDto) {
-    let venda = {
-      cliente: this.securityService.credential.userName,
-      fkComputador: computadorDto,
-      valorUnitario: computadorDto.valorVenda,
-      valorTotal: computadorDto.valorVenda,
-      quantidade: 1,
-      dataVenda: new Date().toISOString()
-    }
-    this.vendaService.vendaControllerIncluir({body: venda})
-      .subscribe(retorno => {
-        console.log("Retorno:", retorno);
-        this.confirmarAcao(retorno);
-      }, erro => {
-        console.log("Erro:" + erro);
-        this.mensageService.addConfirmOk(erro.parameters[0])
-      });
-  }
-
-  confirmarAcao(vendaDto: VendaDto) {
-    this.mensageService.addConfirmOk(`Venda: (ID: ${vendaDto.id}) do ${vendaDto.fkComputador?.descricao} realizada com sucesso!`);
-  }
-
   showError(erro: MessageResponse, acao: string) {
     this.mensageService.addMsgWarning(`Erro ao ${acao}`);
   }
 
-  sair() {
-    this.securityService.invalidate();
-    this.router.navigate(['/acesso']);
-  }
 }
+

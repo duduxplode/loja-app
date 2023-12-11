@@ -32,9 +32,10 @@ import {MessageModule} from "./arquitetura/message/message.module";
 import {AppInterceptor} from "./arquitetura/app.interceptor";
 import {VendaModule} from "./pages/venda/venda.module";
 import {TipoComputadorModule} from "./pages/tipo-computador/tipo-computador.module";
-import { CarrinhoComponent } from './pages/carrinho/carrinho.component';
+import { CarrinhoComponent } from './pages/loja/carrinho/carrinho.component';
 import {ValidationResourceProvider} from "./adminmodule/shared/validation/validation.resource";
 import {AppMessage} from "./adminmodule/app.message";
+import {LojaModule} from "./pages/loja/loja.module";
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import {AppMessage} from "./adminmodule/app.message";
     MatDialogModule,
     ComputadorModule,
     VendaModule,
+    LojaModule,
     TipoComputadorModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,

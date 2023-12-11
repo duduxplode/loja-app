@@ -1,31 +1,30 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {HomeVendaComponent} from "./home-venda/home-venda.component";
+import {HomeLojaComponent} from "../loja/home-loja/home-loja.component";
 import {SecurityGuard} from "../../arquitetura/security/security.guard";
 import {ListVendaComponent} from "./list-venda/list-venda.component";
+import {CarrinhoComponent} from "../loja/carrinho/carrinho.component";
 
 export const vendaRoutes: Routes = [
   {
     path: "venda",
-    component: ListVendaComponent,
-    canActivate: [SecurityGuard],
-    data: {security: {roles: ['ROLE_ADMIN']}}
-    // children: [
-    //   {
-    //     path: "",
-    //     component: ListVendaComponent,
-    //     canActivate: [SecurityGuard],
-    //     data: {security: {roles: ['ROLE_ADMIN']}}
-    //   }
-      // {
-      //   path: "novo",
-      //   component: FormComputadorComponent
-      // },
+
+    children: [
+      {
+        path: "",
+        component: ListVendaComponent,
+        canActivate: [SecurityGuard],
+        data: {security: {roles: ['ROLE_ADMIN']}}
+      },
+      {
+        path: "carrinho",
+        component: CarrinhoComponent
+      }
       // {
       //   path: ":codigo",
       //   component: FormComputadorComponent
       // }
-    // ]
+    ]
   }
 ];
 

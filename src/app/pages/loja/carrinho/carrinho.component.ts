@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import {ComputadorDto} from '../../api/models/computador-dto';
+import {ComputadorDto} from '../../../api/models/computador-dto';
 import {CartService} from './carrinho.service'
 import { default as swal} from 'sweetalert2'
 
@@ -47,5 +47,9 @@ export class CarrinhoComponent implements OnInit {
 
   total() :number{
     return this.cartService.total()
+  }
+
+  comprar() {
+
   }
 }
