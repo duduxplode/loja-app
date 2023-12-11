@@ -9,7 +9,7 @@ import { RequestBuilder } from '../request-builder';
 import { Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 
-import { ComputadorDto } from '../models/computador-dto';
+import { ItemVendaDto } from '../models/item-venda-dto';
 import { Pageable } from '../models/pageable';
 import { SearchField } from '../models/search-field';
 import { SearchFieldValue } from '../models/search-field-value';
@@ -17,7 +17,7 @@ import { SearchFieldValue } from '../models/search-field-value';
 @Injectable({
   providedIn: 'root',
 })
-export class ComputadorControllerService extends BaseService {
+export class ItemVendaControllerService extends BaseService {
   constructor(
     config: ApiConfiguration,
     http: HttpClient
@@ -26,26 +26,26 @@ export class ComputadorControllerService extends BaseService {
   }
 
   /**
-   * Path part for operation computadorControllerObterPorId
+   * Path part for operation itemVendaControllerObterPorId
    */
-  static readonly ComputadorControllerObterPorIdPath = '/api/v1/computador/{id}';
+  static readonly ItemVendaControllerObterPorIdPath = '/api/v1/item_venda/{id}';
 
   /**
    * Obter os dados completos de uma entidiade pelo id informado!
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `computadorControllerObterPorId()` instead.
+   * To access only the response body, use `itemVendaControllerObterPorId()` instead.
    *
    * This method doesn't expect any request body.
    */
-  computadorControllerObterPorId$Response(params: {
+  itemVendaControllerObterPorId$Response(params: {
     id: number;
   },
   context?: HttpContext
 
 ): Observable<StrictHttpResponse<any>> {
 
-    const rb = new RequestBuilder(this.rootUrl, ComputadorControllerService.ComputadorControllerObterPorIdPath, 'get');
+    const rb = new RequestBuilder(this.rootUrl, ItemVendaControllerService.ItemVendaControllerObterPorIdPath, 'get');
     if (params) {
       rb.path('id', params.id, {});
     }
@@ -66,44 +66,44 @@ export class ComputadorControllerService extends BaseService {
    * Obter os dados completos de uma entidiade pelo id informado!
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `computadorControllerObterPorId$Response()` instead.
+   * To access the full response (for headers, for example), `itemVendaControllerObterPorId$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  computadorControllerObterPorId(params: {
+  itemVendaControllerObterPorId(params: {
     id: number;
   },
   context?: HttpContext
 
 ): Observable<any> {
 
-    return this.computadorControllerObterPorId$Response(params,context).pipe(
+    return this.itemVendaControllerObterPorId$Response(params,context).pipe(
       map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 
   /**
-   * Path part for operation computadorControllerAlterar
+   * Path part for operation itemVendaControllerAlterar
    */
-  static readonly ComputadorControllerAlterarPath = '/api/v1/computador/{id}';
+  static readonly ItemVendaControllerAlterarPath = '/api/v1/item_venda/{id}';
 
   /**
    * Método utilizado para altlerar os dados de uma entidiade
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `computadorControllerAlterar()` instead.
+   * To access only the response body, use `itemVendaControllerAlterar()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  computadorControllerAlterar$Response(params: {
+  itemVendaControllerAlterar$Response(params: {
     id: number;
-    body: ComputadorDto
+    body: ItemVendaDto
   },
   context?: HttpContext
 
 ): Observable<StrictHttpResponse<any>> {
 
-    const rb = new RequestBuilder(this.rootUrl, ComputadorControllerService.ComputadorControllerAlterarPath, 'put');
+    const rb = new RequestBuilder(this.rootUrl, ItemVendaControllerService.ItemVendaControllerAlterarPath, 'put');
     if (params) {
       rb.path('id', params.id, {});
       rb.body(params.body, 'application/json');
@@ -125,44 +125,44 @@ export class ComputadorControllerService extends BaseService {
    * Método utilizado para altlerar os dados de uma entidiade
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `computadorControllerAlterar$Response()` instead.
+   * To access the full response (for headers, for example), `itemVendaControllerAlterar$Response()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  computadorControllerAlterar(params: {
+  itemVendaControllerAlterar(params: {
     id: number;
-    body: ComputadorDto
+    body: ItemVendaDto
   },
   context?: HttpContext
 
 ): Observable<any> {
 
-    return this.computadorControllerAlterar$Response(params,context).pipe(
+    return this.itemVendaControllerAlterar$Response(params,context).pipe(
       map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 
   /**
-   * Path part for operation computadorControllerRemover
+   * Path part for operation itemVendaControllerRemover
    */
-  static readonly ComputadorControllerRemoverPath = '/api/v1/computador/{id}';
+  static readonly ItemVendaControllerRemoverPath = '/api/v1/item_venda/{id}';
 
   /**
    * Método utilizado para remover uma entidiade pela id informado
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `computadorControllerRemover()` instead.
+   * To access only the response body, use `itemVendaControllerRemover()` instead.
    *
    * This method doesn't expect any request body.
    */
-  computadorControllerRemover$Response(params: {
+  itemVendaControllerRemover$Response(params: {
     id: number;
   },
   context?: HttpContext
 
 ): Observable<StrictHttpResponse<any>> {
 
-    const rb = new RequestBuilder(this.rootUrl, ComputadorControllerService.ComputadorControllerRemoverPath, 'delete');
+    const rb = new RequestBuilder(this.rootUrl, ItemVendaControllerService.ItemVendaControllerRemoverPath, 'delete');
     if (params) {
       rb.path('id', params.id, {});
     }
@@ -183,42 +183,42 @@ export class ComputadorControllerService extends BaseService {
    * Método utilizado para remover uma entidiade pela id informado
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `computadorControllerRemover$Response()` instead.
+   * To access the full response (for headers, for example), `itemVendaControllerRemover$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  computadorControllerRemover(params: {
+  itemVendaControllerRemover(params: {
     id: number;
   },
   context?: HttpContext
 
 ): Observable<any> {
 
-    return this.computadorControllerRemover$Response(params,context).pipe(
+    return this.itemVendaControllerRemover$Response(params,context).pipe(
       map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 
   /**
-   * Path part for operation computadorControllerListAll
+   * Path part for operation itemVendaControllerListAll
    */
-  static readonly ComputadorControllerListAllPath = '/api/v1/computador';
+  static readonly ItemVendaControllerListAllPath = '/api/v1/item_venda';
 
   /**
-   * Listagem Geral de computadores
+   * Listagem Geral
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `computadorControllerListAll()` instead.
+   * To access only the response body, use `itemVendaControllerListAll()` instead.
    *
    * This method doesn't expect any request body.
    */
-  computadorControllerListAll$Response(params?: {
+  itemVendaControllerListAll$Response(params?: {
   },
   context?: HttpContext
 
-): Observable<StrictHttpResponse<Array<ComputadorDto>>> {
+): Observable<StrictHttpResponse<any>> {
 
-    const rb = new RequestBuilder(this.rootUrl, ComputadorControllerService.ComputadorControllerListAllPath, 'get');
+    const rb = new RequestBuilder(this.rootUrl, ItemVendaControllerService.ItemVendaControllerListAllPath, 'get');
     if (params) {
     }
 
@@ -229,51 +229,51 @@ export class ComputadorControllerService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<Array<ComputadorDto>>;
+        return r as StrictHttpResponse<any>;
       })
     );
   }
 
   /**
-   * Listagem Geral de computadores
+   * Listagem Geral
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `computadorControllerListAll$Response()` instead.
+   * To access the full response (for headers, for example), `itemVendaControllerListAll$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  computadorControllerListAll(params?: {
+  itemVendaControllerListAll(params?: {
   },
   context?: HttpContext
 
-): Observable<Array<ComputadorDto>> {
+): Observable<any> {
 
-    return this.computadorControllerListAll$Response(params,context).pipe(
-      map((r: StrictHttpResponse<Array<ComputadorDto>>) => r.body as Array<ComputadorDto>)
+    return this.itemVendaControllerListAll$Response(params,context).pipe(
+      map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 
   /**
-   * Path part for operation computadorControllerIncluir
+   * Path part for operation itemVendaControllerIncluir
    */
-  static readonly ComputadorControllerIncluirPath = '/api/v1/computador';
+  static readonly ItemVendaControllerIncluirPath = '/api/v1/item_venda';
 
   /**
-   * Método utilizado para realizar a inclusão de um computador
+   * Método utilizado para realizar a inclusão de um entidade
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `computadorControllerIncluir()` instead.
+   * To access only the response body, use `itemVendaControllerIncluir()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  computadorControllerIncluir$Response(params: {
-    body: ComputadorDto
+  itemVendaControllerIncluir$Response(params: {
+    body: ItemVendaDto
   },
   context?: HttpContext
 
 ): Observable<StrictHttpResponse<any>> {
 
-    const rb = new RequestBuilder(this.rootUrl, ComputadorControllerService.ComputadorControllerIncluirPath, 'post');
+    const rb = new RequestBuilder(this.rootUrl, ItemVendaControllerService.ItemVendaControllerIncluirPath, 'post');
     if (params) {
       rb.body(params.body, 'application/json');
     }
@@ -291,45 +291,45 @@ export class ComputadorControllerService extends BaseService {
   }
 
   /**
-   * Método utilizado para realizar a inclusão de um computador
+   * Método utilizado para realizar a inclusão de um entidade
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `computadorControllerIncluir$Response()` instead.
+   * To access the full response (for headers, for example), `itemVendaControllerIncluir$Response()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  computadorControllerIncluir(params: {
-    body: ComputadorDto
+  itemVendaControllerIncluir(params: {
+    body: ItemVendaDto
   },
   context?: HttpContext
 
 ): Observable<any> {
 
-    return this.computadorControllerIncluir$Response(params,context).pipe(
+    return this.itemVendaControllerIncluir$Response(params,context).pipe(
       map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 
   /**
-   * Path part for operation computadorControllerSearchFieldsList
+   * Path part for operation itemVendaControllerSearchFieldsList
    */
-  static readonly ComputadorControllerSearchFieldsListPath = '/api/v1/computador/search-fields';
+  static readonly ItemVendaControllerSearchFieldsListPath = '/api/v1/item_venda/search-fields';
 
   /**
    * Listagem dos campos de busca
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `computadorControllerSearchFieldsList()` instead.
+   * To access only the response body, use `itemVendaControllerSearchFieldsList()` instead.
    *
    * This method doesn't expect any request body.
    */
-  computadorControllerSearchFieldsList$Response(params?: {
+  itemVendaControllerSearchFieldsList$Response(params?: {
   },
   context?: HttpContext
 
 ): Observable<StrictHttpResponse<Array<SearchField>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, ComputadorControllerService.ComputadorControllerSearchFieldsListPath, 'get');
+    const rb = new RequestBuilder(this.rootUrl, ItemVendaControllerService.ItemVendaControllerSearchFieldsListPath, 'get');
     if (params) {
     }
 
@@ -349,42 +349,42 @@ export class ComputadorControllerService extends BaseService {
    * Listagem dos campos de busca
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `computadorControllerSearchFieldsList$Response()` instead.
+   * To access the full response (for headers, for example), `itemVendaControllerSearchFieldsList$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  computadorControllerSearchFieldsList(params?: {
+  itemVendaControllerSearchFieldsList(params?: {
   },
   context?: HttpContext
 
 ): Observable<Array<SearchField>> {
 
-    return this.computadorControllerSearchFieldsList$Response(params,context).pipe(
+    return this.itemVendaControllerSearchFieldsList$Response(params,context).pipe(
       map((r: StrictHttpResponse<Array<SearchField>>) => r.body as Array<SearchField>)
     );
   }
 
   /**
-   * Path part for operation computadorControllerSearchFieldsAction
+   * Path part for operation itemVendaControllerSearchFieldsAction
    */
-  static readonly ComputadorControllerSearchFieldsActionPath = '/api/v1/computador/search-fields';
+  static readonly ItemVendaControllerSearchFieldsActionPath = '/api/v1/item_venda/search-fields';
 
   /**
    * Realiza a busca pelos valores dos campos informados
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `computadorControllerSearchFieldsAction()` instead.
+   * To access only the response body, use `itemVendaControllerSearchFieldsAction()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  computadorControllerSearchFieldsAction$Response(params: {
+  itemVendaControllerSearchFieldsAction$Response(params: {
     body: Array<SearchFieldValue>
   },
   context?: HttpContext
 
 ): Observable<StrictHttpResponse<any>> {
 
-    const rb = new RequestBuilder(this.rootUrl, ComputadorControllerService.ComputadorControllerSearchFieldsActionPath, 'post');
+    const rb = new RequestBuilder(this.rootUrl, ItemVendaControllerService.ItemVendaControllerSearchFieldsActionPath, 'post');
     if (params) {
       rb.body(params.body, 'application/json');
     }
@@ -405,36 +405,36 @@ export class ComputadorControllerService extends BaseService {
    * Realiza a busca pelos valores dos campos informados
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `computadorControllerSearchFieldsAction$Response()` instead.
+   * To access the full response (for headers, for example), `itemVendaControllerSearchFieldsAction$Response()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  computadorControllerSearchFieldsAction(params: {
+  itemVendaControllerSearchFieldsAction(params: {
     body: Array<SearchFieldValue>
   },
   context?: HttpContext
 
 ): Observable<any> {
 
-    return this.computadorControllerSearchFieldsAction$Response(params,context).pipe(
+    return this.itemVendaControllerSearchFieldsAction$Response(params,context).pipe(
       map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 
   /**
-   * Path part for operation computadorControllerSearchFieldsActionPage
+   * Path part for operation itemVendaControllerSearchFieldsActionPage
    */
-  static readonly ComputadorControllerSearchFieldsActionPagePath = '/api/v1/computador/search-fields/page';
+  static readonly ItemVendaControllerSearchFieldsActionPagePath = '/api/v1/item_venda/search-fields/page';
 
   /**
    * Realiza a busca pelos valores dos campos informados
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `computadorControllerSearchFieldsActionPage()` instead.
+   * To access only the response body, use `itemVendaControllerSearchFieldsActionPage()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  computadorControllerSearchFieldsActionPage$Response(params: {
+  itemVendaControllerSearchFieldsActionPage$Response(params: {
     page?: number;
     size?: number;
     sort?: Array<string>;
@@ -444,7 +444,7 @@ export class ComputadorControllerService extends BaseService {
 
 ): Observable<StrictHttpResponse<any>> {
 
-    const rb = new RequestBuilder(this.rootUrl, ComputadorControllerService.ComputadorControllerSearchFieldsActionPagePath, 'post');
+    const rb = new RequestBuilder(this.rootUrl, ItemVendaControllerService.ItemVendaControllerSearchFieldsActionPagePath, 'post');
     if (params) {
       rb.query('page', params.page, {});
       rb.query('size', params.size, {});
@@ -468,11 +468,11 @@ export class ComputadorControllerService extends BaseService {
    * Realiza a busca pelos valores dos campos informados
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `computadorControllerSearchFieldsActionPage$Response()` instead.
+   * To access the full response (for headers, for example), `itemVendaControllerSearchFieldsActionPage$Response()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  computadorControllerSearchFieldsActionPage(params: {
+  itemVendaControllerSearchFieldsActionPage(params: {
     page?: number;
     size?: number;
     sort?: Array<string>;
@@ -482,32 +482,32 @@ export class ComputadorControllerService extends BaseService {
 
 ): Observable<any> {
 
-    return this.computadorControllerSearchFieldsActionPage$Response(params,context).pipe(
+    return this.itemVendaControllerSearchFieldsActionPage$Response(params,context).pipe(
       map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 
   /**
-   * Path part for operation computadorControllerListAllPage
+   * Path part for operation itemVendaControllerListAllPage
    */
-  static readonly ComputadorControllerListAllPagePath = '/api/v1/computador/page';
+  static readonly ItemVendaControllerListAllPagePath = '/api/v1/item_venda/page';
 
   /**
    * Listagem Geral paginada
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `computadorControllerListAllPage()` instead.
+   * To access only the response body, use `itemVendaControllerListAllPage()` instead.
    *
    * This method doesn't expect any request body.
    */
-  computadorControllerListAllPage$Response(params: {
+  itemVendaControllerListAllPage$Response(params: {
     page: Pageable;
   },
   context?: HttpContext
 
 ): Observable<StrictHttpResponse<any>> {
 
-    const rb = new RequestBuilder(this.rootUrl, ComputadorControllerService.ComputadorControllerListAllPagePath, 'get');
+    const rb = new RequestBuilder(this.rootUrl, ItemVendaControllerService.ItemVendaControllerListAllPagePath, 'get');
     if (params) {
       rb.query('page', params.page, {});
     }
@@ -528,18 +528,18 @@ export class ComputadorControllerService extends BaseService {
    * Listagem Geral paginada
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `computadorControllerListAllPage$Response()` instead.
+   * To access the full response (for headers, for example), `itemVendaControllerListAllPage$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  computadorControllerListAllPage(params: {
+  itemVendaControllerListAllPage(params: {
     page: Pageable;
   },
   context?: HttpContext
 
 ): Observable<any> {
 
-    return this.computadorControllerListAllPage$Response(params,context).pipe(
+    return this.itemVendaControllerListAllPage$Response(params,context).pipe(
       map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }

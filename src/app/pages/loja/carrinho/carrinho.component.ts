@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import {ComputadorDto} from '../../../api/models/computador-dto';
 import {CartService} from './carrinho.service'
 import { default as swal} from 'sweetalert2'
+import {ItemVendaDto} from "../../../api/models/item-venda-dto";
 
 @Component({
   selector: 'app-carrinho',
@@ -20,10 +21,11 @@ export class CarrinhoComponent implements OnInit {
     }
   }
 
-  items(): ComputadorDto[] {
+  items(): ItemVendaDto[] {
     return this.cartService.items;
   }
-  removeItem(item:ComputadorDto){
+
+  removeItem(item:ItemVendaDto){
     let c = this.cartService
     swal.fire({
       title: 'Confirmação',
@@ -50,6 +52,6 @@ export class CarrinhoComponent implements OnInit {
   }
 
   comprar() {
-
+    this.cartService.vender();
   }
 }

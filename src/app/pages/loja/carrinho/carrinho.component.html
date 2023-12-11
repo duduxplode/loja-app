@@ -1,17 +1,17 @@
 <ul class="navbar-nav cart-items" *ngIf="items().length">
-  <li class="nav-item" *ngFor="let computadorDto of items()">
+  <li class="nav-item" *ngFor="let itemVendaDto of items()">
     <div class="media">
-      <img class="img-thumb" src="data:image/jpeg;base64,{{computadorDto.imagemBase64}}"
-           onError="this.src='/assets/img/no-img.jpg';" alt="{{computadorDto.descricao}}" width="10%">
+      <img class="img-thumb" src="data:image/jpeg;base64,{{itemVendaDto.fkComputadorDTO?.imagemBase64}}"
+           onError="this.src='/assets/img/no-img.jpg';" alt="{{itemVendaDto.fkComputadorDTO?.descricao}}" width="10%">
       <div class="media-body">
-        <h5 class="mt-0">{{computadorDto.descricao}} </h5>
-        <span>1x de {{computadorDto.valorVenda}}</span>
+        <h5 class="mt-0">{{itemVendaDto.fkComputadorDTO?.descricao}} </h5>
+        <span>{{itemVendaDto.quantidade}}x de {{itemVendaDto.valorUnitario}} = {{itemVendaDto.valorTotal}}</span>
       </div>
-      <span class="remove-item" (click)="removeItem(computadorDto)">x</span>
+      <span class="remove-item" (click)="removeItem(itemVendaDto)">Remover</span>
     </div>
   </li>
   <li class="total-cart text-right">
-    <p>subtotal</p>
+    <p>Total</p>
     <span id="sub-cash">{{total()}} à vista</span>
   </li>
   <li>

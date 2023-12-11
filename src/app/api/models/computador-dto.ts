@@ -1,6 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
-import { VendaDto } from './venda-dto';
+import { ItemVendaDto } from './item-venda-dto';
 export interface ComputadorDto {
   contVendas?: number;
   dataLancamento?: string;
@@ -8,7 +8,7 @@ export interface ComputadorDto {
   id?: number;
   imagem?: string;
   imagemBase64?: string;
-  listVendaDto?: Array<VendaDto>;
+  listItemVendaDTO?: Array<ItemVendaDto>;
   processador?: string;
   quantidade?: number;
   tamanhoHd?: number;

@@ -1,4 +1,4 @@
-import {CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID, NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -36,6 +36,10 @@ import { CarrinhoComponent } from './pages/loja/carrinho/carrinho.component';
 import {ValidationResourceProvider} from "./adminmodule/shared/validation/validation.resource";
 import {AppMessage} from "./adminmodule/app.message";
 import {LojaModule} from "./pages/loja/loja.module";
+import {registerLocaleData} from "@angular/common";
+import ptBr from '@angular/common/locales/pt';
+
+registerLocaleData(ptBr);
 
 @NgModule({
   declarations: [
@@ -97,8 +101,13 @@ import {LojaModule} from "./pages/loja/loja.module";
       useValue: AppMessage,
     },
     {
-      provide: LOCALE_ID, useValue: 'pt'
-    }
+      provide: LOCALE_ID,
+      useValue: 'pt',
+    },
+    {
+      provide: DEFAULT_CURRENCY_CODE,
+      useValue: 'BRL',
+    },
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
