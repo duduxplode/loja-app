@@ -5,6 +5,7 @@ import {VendaControllerService} from "../../../api/services/venda-controller.ser
 import {VendaDto} from "../../../api/models/venda-dto";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import {PeriodicElement} from "../PeriodicElement";
 
 @Component({
   selector: 'app-list-venda',
@@ -20,6 +21,15 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
 })
 export class ListVendaComponent implements OnInit{
   colunasMostrar = ['id', 'cliente' , 'data', 'quantidade', 'valor_total'];
+  colunasMostrarWithExpand = [...this.colunasMostrar, 'expand'];
+  expandedElement: PeriodicElement = new class implements PeriodicElement {
+    cliente!: string;
+    data!: string;
+    id!: number;
+    item!: string;
+    quantidade!: number;
+    valor_total!: number;
+  };
   vendaListaDataSource: MatTableDataSource<VendaDto> = new MatTableDataSource<VendaDto>([]);
   refreshEvento: any = null;
 
